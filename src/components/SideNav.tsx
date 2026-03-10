@@ -1,19 +1,22 @@
-import { Calendar, Home, ClipboardList, Building2, Bell, Settings } from 'lucide-react';
+import { Calendar, Home, ClipboardList, Building2, Bell, Settings, Users, Shield, MessageCircle } from 'lucide-react';
 
 interface SideNavProps {
   activeSection: string;
   onSectionChange: (section: string) => void;
   revenue: number;
+  pendingAlerts: number;
 }
 
 const navItems = [
   { id: 'timeline', icon: Home, label: 'Timeline' },
   { id: 'calendar', icon: Calendar, label: 'Calendar' },
-  { id: 'bookings', icon: ClipboardList, label: 'Bookings' },
   { id: 'properties', icon: Building2, label: 'Properties' },
+  { id: 'tasks', icon: ClipboardList, label: 'Tasks' },
+  { id: 'community', icon: Users, label: 'Community' },
+  { id: 'regulatory', icon: Shield, label: 'Regulatory' },
 ];
 
-const SideNav = ({ activeSection, onSectionChange, revenue }: SideNavProps) => {
+const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: SideNavProps) => {
   return (
     <>
       {/* Desktop sidebar */}
@@ -37,19 +40,26 @@ const SideNav = ({ activeSection, onSectionChange, revenue }: SideNavProps) => {
           ))}
         </nav>
 
-        <div className="mt-auto flex flex-col gap-1 items-center">
-          <div className="text-[10px] text-sidebar-foreground/40 font-display uppercase tracking-wider mb-1">
-            Revenue
+        <div className="mt-auto flex flex-col gap-2 items-center">
+          <div className="text-center">
+            <div className="text-[9px] text-sidebar-foreground/40 font-display uppercase tracking-wider">
+              Revenue
+            </div>
+            <div className="text-xs font-display font-semibold text-sidebar-primary">
+              ฿{(revenue / 1000).toFixed(0)}k
+            </div>
           </div>
-          <div className="text-xs font-display font-semibold text-sidebar-primary">
-            ฿{(revenue / 1000).toFixed(0)}k
-          </div>
-        </div>
 
-        <div className="mt-4 flex flex-col gap-1">
-          <button className="nav-icon-btn" title="Notifications">
-            <Bell size={20} />
-          </button>
+          <div className="relative">
+            <button className="nav-icon-btn" title="Notifications">
+              <Bell size={20} />
+            </button>
+            {pendingAlerts > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[9px] font-display font-bold flex items-center justify-center">
+                {pendingAlerts}
+              </span>
+            )}
+          </div>
           <button className="nav-icon-btn" title="Settings">
             <Settings size={20} />
           </button>
@@ -57,8 +67,8 @@ const SideNav = ({ activeSection, onSectionChange, revenue }: SideNavProps) => {
       </aside>
 
       {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sidebar flex justify-around items-center h-14 z-30 safe-area-pb">
-        {navItems.map((item) => (
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sidebar flex justify-around items-center h-14 z-30">
+        {navItems.slice(0, 5).map((item) => (
           <button
             key={item.id}
             onClick={() => onSectionChange(item.id)}
@@ -67,9 +77,16 @@ const SideNav = ({ activeSection, onSectionChange, revenue }: SideNavProps) => {
             <item.icon size={20} />
           </button>
         ))}
-        <button className="nav-icon-btn" title="Notifications">
-          <Bell size={20} />
-        </button>
+        <div className="relative">
+          <button className="nav-icon-btn" title="Notifications">
+            <Bell size={20} />
+          </button>
+          {pendingAlerts > 0 && (
+            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[9px] font-display font-bold flex items-center justify-center">
+              {pendingAlerts}
+            </span>
+          )}
+        </div>
       </nav>
     </>
   );

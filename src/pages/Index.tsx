@@ -2,7 +2,13 @@ import { useState } from 'react';
 import SideNav from '@/components/SideNav';
 import TimelineCard from '@/components/TimelineCard';
 import DetailPane from '@/components/DetailPane';
-import { mockTimeline, revenueThisMonth } from '@/data/mockData';
+import StatsHeader from '@/components/StatsHeader';
+import CalendarView from '@/components/CalendarView';
+import PropertiesView from '@/components/PropertiesView';
+import CommunityView from '@/components/CommunityView';
+import RegulatoryView from '@/components/RegulatoryView';
+import TasksView from '@/components/TasksView';
+import { mockTimeline, revenueThisMonth, dashboardStats } from '@/data/mockData';
 import type { TimelineItem } from '@/data/mockData';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -24,28 +30,24 @@ const Index = () => {
     setSelectedId(null);
   };
 
-  return (
-    <div className="min-h-screen bg-background">
-      <SideNav
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-        revenue={revenueThisMonth}
-      />
+  const pendingAlerts = dashboardStats.regulatoryPending + dashboardStats.pendingInquiries;
 
-      {/* Main content area — offset by sidebar */}
-      <div className="md:ml-16 pb-16 md:pb-0">
-        <div className="max-w-6xl mx-auto flex gap-4 p-4 lg:p-6 min-h-screen">
-          {/* Timeline column */}
-          <div className="flex-1 min-w-0 lg:max-w-xl">
-            {/* Mobile header */}
-            <div className="mb-6">
-              <h1 className="font-display font-bold text-xl text-foreground">VillaFlow</h1>
-              <p className="font-display text-xs text-muted-foreground mt-1">
-                Zero-Phone Villa Operations
-              </p>
-            </div>
-
-            {/* Timeline */}
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'calendar':
+        return <CalendarView />;
+      case 'properties':
+        return <PropertiesView />;
+      case 'community':
+        return <CommunityView />;
+      case 'regulatory':
+        return <RegulatoryView />;
+      case 'tasks':
+        return <TasksView />;
+      default:
+        return (
+          <>
+            <StatsHeader />
             <div className="space-y-3">
               {mockTimeline.map((item) => (
                 <TimelineCard
@@ -56,12 +58,39 @@ const Index = () => {
                 />
               ))}
             </div>
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SideNav
+        activeSection={activeSection}
+        onSectionChange={setActiveSection}
+        revenue={revenueThisMonth}
+        pendingAlerts={pendingAlerts}
+      />
+
+      <div className="md:ml-16 pb-16 md:pb-0">
+        <div className="max-w-6xl mx-auto flex gap-4 p-4 lg:p-6 min-h-screen">
+          {/* Main content */}
+          <div className="flex-1 min-w-0 lg:max-w-xl">
+            <div className="mb-6">
+              <h1 className="font-display font-bold text-xl text-foreground">VillaFlow</h1>
+              <p className="font-display text-xs text-muted-foreground mt-0.5">
+                Zero-Phone Villa Operations · Thai Intelligence OS
+              </p>
+            </div>
+            {renderSection()}
           </div>
 
-          {/* Detail pane — desktop */}
-          <div className="hidden lg:block w-80 xl:w-96 flex-shrink-0 sticky top-6 self-start">
-            <DetailPane item={selectedItem} onClose={handleCloseDetail} />
-          </div>
+          {/* Detail pane — desktop (only on timeline) */}
+          {activeSection === 'timeline' && (
+            <div className="hidden lg:block w-80 xl:w-96 flex-shrink-0 sticky top-6 self-start">
+              <DetailPane item={selectedItem} onClose={handleCloseDetail} />
+            </div>
+          )}
         </div>
       </div>
 
