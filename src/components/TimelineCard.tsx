@@ -8,6 +8,10 @@ import {
   CheckCircle2,
   Clock,
   Loader2,
+  Shield,
+  Users,
+  QrCode,
+  Bot,
 } from 'lucide-react';
 import GenerativeArt from './GenerativeArt';
 import type { TimelineItem } from '@/data/mockData';
@@ -18,12 +22,15 @@ interface TimelineCardProps {
   onSelect: (id: string) => void;
 }
 
-const typeConfig: Record<string, { icon: typeof CalendarCheck; accent: string }> = {
-  booking: { icon: CalendarCheck, accent: 'text-accent' },
-  inquiry: { icon: MessageCircle, accent: 'text-muted-foreground' },
-  task: { icon: Sparkles, accent: 'text-primary' },
-  damage: { icon: AlertTriangle, accent: 'text-destructive' },
-  pricing: { icon: TrendingUp, accent: 'text-accent' },
+const typeConfig: Record<string, { icon: typeof CalendarCheck; accent: string; label: string }> = {
+  booking: { icon: CalendarCheck, accent: 'text-accent', label: 'Booking' },
+  inquiry: { icon: MessageCircle, accent: 'text-primary', label: 'Inquiry' },
+  task: { icon: Sparkles, accent: 'text-primary', label: 'Task' },
+  damage: { icon: AlertTriangle, accent: 'text-destructive', label: 'Damage' },
+  pricing: { icon: TrendingUp, accent: 'text-accent', label: 'Pricing AI' },
+  regulatory: { icon: Shield, accent: 'text-destructive', label: 'Regulatory' },
+  community: { icon: Users, accent: 'text-primary', label: 'Community' },
+  guest_flow: { icon: QrCode, accent: 'text-accent', label: 'Guest Flow' },
 };
 
 const statusIcon = (status?: string) => {
@@ -87,14 +94,30 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-display font-semibold text-sm text-foreground truncate">
-              {item.title}
+            <span className="font-display text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
+              {config.label}
             </span>
             {statusIcon(item.status)}
           </div>
-          <p className="font-body text-xs text-muted-foreground leading-relaxed">
+          <span className="font-display font-semibold text-sm text-foreground leading-snug block">
+            {item.title}
+          </span>
+          <p className="font-body text-xs text-muted-foreground leading-relaxed mt-1">
             {item.subtitle}
           </p>
+
+          {/* AI response preview for inquiries */}
+          {item.type === 'inquiry' && item.data.aiResponse && (
+            <div className="mt-2 bg-background rounded-md p-2 border border-border">
+              <div className="flex items-center gap-1 mb-1">
+                <Bot size={10} className="text-accent" />
+                <span className="font-display text-[10px] text-accent font-medium">AI Draft ({((item.data.aiConfidence as number) * 100).toFixed(0)}%)</span>
+              </div>
+              <p className="font-body text-[11px] text-muted-foreground leading-relaxed line-clamp-2">
+                {item.data.aiResponse as string}
+              </p>
+            </div>
+          )}
 
           {/* Price tag for bookings */}
           {item.type === 'booking' && item.data.totalPrice && (
@@ -117,19 +140,63 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
               <span className="font-display text-xs font-semibold text-accent">
                 ฿{(item.data.suggestedPrice as number).toLocaleString()}/night
               </span>
+              {item.data.factors && (
+                <span className="text-[10px] text-muted-foreground font-display">
+                  · {(item.data.factors as string[]).length} factors
+                </span>
+              )}
             </div>
           )}
 
           {/* Damage cost */}
           {item.type === 'damage' && (
-            <div className="mt-2">
+            <div className="mt-2 flex items-center gap-2">
               <span className="font-display text-xs text-destructive">
                 Est. ฿{(item.data.estimatedCost as number).toLocaleString()}
               </span>
+              {item.data.aiDetected && (
+                <span className="text-[10px] bg-background text-accent px-1.5 py-0.5 rounded font-display font-medium">
+                  AI Detected
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Guest flow items */}
+          {item.type === 'guest_flow' && item.data.items && (
+            <div className="mt-2 flex flex-wrap gap-1">
+              {(item.data.items as string[]).map((it, i) => (
+                <span key={i} className="text-[10px] bg-background text-muted-foreground px-1.5 py-0.5 rounded font-display">
+                  {it}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Community likes/replies */}
+          {item.type === 'community' && (
+            <div className="mt-2 flex items-center gap-3 text-[10px] text-muted-foreground font-display">
+              <span>👍 {item.data.likes as number}</span>
+              <span>💬 {item.data.replies as number}</span>
+              <span className="text-primary">{item.data.region as string}</span>
+            </div>
+          )}
+
+          {/* Regulatory deadline */}
+          {item.type === 'regulatory' && item.data.deadline && (
+            <div className="mt-2">
+              <span className="font-display text-[10px] text-destructive font-medium">
+                Deadline: {item.data.deadline as string}
+              </span>
+              {item.data.autoGenerated && (
+                <span className="ml-2 text-[10px] bg-background text-accent px-1.5 py-0.5 rounded font-display">
+                  Auto-generated
+                </span>
+              )}
             </div>
           )}
         </div>
-        <div className="text-[10px] text-muted-foreground font-display whitespace-nowrap">
+        <div className="text-[10px] text-muted-foreground font-display whitespace-nowrap text-right">
           {formatDate(item.timestamp)}
           <br />
           {formatTime(item.timestamp)}
