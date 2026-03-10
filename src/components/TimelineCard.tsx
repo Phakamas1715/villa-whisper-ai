@@ -146,8 +146,6 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
                 <span className="font-display text-lg font-bold text-accent">฿{(item.data.totalPrice as number).toLocaleString()}</span>
                 {platformIcon(item.data.source as string)}
               </div>
-                <span className="badge-muted">{item.data.source as string}</span>
-              </div>
             )}
 
             {item.type === 'pricing' && (
