@@ -130,6 +130,28 @@ const translations: Translations = {
   // Language
   'lang.switch': { th: 'EN', en: 'TH' },
 
+  // Analytics
+  'analytics.title': { th: 'วิเคราะห์รายได้', en: 'Revenue Analytics' },
+  'analytics.subtitle': { th: 'สรุปรายได้ · Occupancy · แนวโน้มตามฤดูกาล', en: 'Revenue · Occupancy · Seasonal Trends' },
+  'analytics.total_revenue': { th: 'รายได้รวม', en: 'Total Revenue' },
+  'analytics.avg_occupancy': { th: 'เข้าพักเฉลี่ย', en: 'Avg Occupancy' },
+  'analytics.total_bookings': { th: 'จองทั้งหมด', en: 'Bookings' },
+  'analytics.avg_rate': { th: 'ราคาเฉลี่ย', en: 'Avg Rate' },
+  'analytics.this_month': { th: 'เดือนนี้', en: 'This month' },
+  'analytics.per_night': { th: '/คืน', en: '/night' },
+  'analytics.daily_revenue': { th: 'รายได้รายวัน', en: 'Daily Revenue' },
+  'analytics.march_2026': { th: 'มีนาคม 2026', en: 'March 2026' },
+  'analytics.monthly_overview': { th: 'สรุปรายเดือน', en: 'Monthly Overview' },
+  'analytics.revenue_and_occupancy': { th: 'รายได้ + อัตราเข้าพัก', en: 'Revenue + Occupancy' },
+  'analytics.revenue': { th: 'รายได้', en: 'Revenue' },
+  'analytics.occupancy': { th: 'เข้าพัก', en: 'Occupancy' },
+  'analytics.occupancy_by_property': { th: 'อัตราเข้าพักตามที่พัก', en: 'Occupancy by Property' },
+  'analytics.booking_sources': { th: 'แหล่งที่มาการจอง', en: 'Booking Sources' },
+  'analytics.seasonal_trends': { th: 'แนวโน้มตามฤดูกาล', en: 'Seasonal Trends' },
+  'analytics.demand_vs_price': { th: 'ดีมานด์ vs ราคาเฉลี่ย · ทั้งปี', en: 'Demand vs Avg Price · Full Year' },
+  'analytics.demand': { th: 'ดีมานด์', en: 'Demand' },
+  'analytics.avg_price': { th: 'ราคาเฉลี่ย', en: 'Avg Price' },
+
   // Landing Page
   'landing.nav.features': { th: 'ฟีเจอร์', en: 'Features' },
   'landing.nav.pricing': { th: 'ราคา', en: 'Pricing' },

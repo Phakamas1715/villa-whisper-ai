@@ -14,6 +14,7 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
 
   const navItems = [
     { id: 'timeline', icon: Home, label: t('nav.timeline') },
+    { id: 'analytics', icon: BarChart3, label: t('nav.analytics') },
     { id: 'calendar', icon: Calendar, label: t('nav.calendar') },
     { id: 'properties', icon: Building2, label: t('nav.properties') },
     { id: 'tasks', icon: ClipboardList, label: t('nav.tasks') },
