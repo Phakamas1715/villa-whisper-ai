@@ -118,6 +118,17 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
             <h3 className="font-display font-semibold text-base text-foreground leading-snug">{item.title}</h3>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mt-1">{item.subtitle}</p>
 
+            {item.type === 'inquiry' && (
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                {platformIcon(item.data.platform as string)}
+                {item.data.language && (
+                  <span className="text-xs font-display text-muted-foreground">
+                    {item.data.language === 'th' ? '🇹🇭' : item.data.language === 'en' ? '🇬🇧' : item.data.language === 'ja' ? '🇯🇵' : item.data.language === 'zh' ? '🇨🇳' : item.data.language === 'ko' ? '🇰🇷' : '🌐'} {(item.data.language as string).toUpperCase()}
+                  </span>
+                )}
+              </div>
+            )}
+
             {item.type === 'inquiry' && item.data.aiResponse && (
               <div className="mt-3 bg-accent/5 rounded-xl p-3 border border-accent/15">
                 <div className="flex items-center gap-1.5 mb-1.5">
