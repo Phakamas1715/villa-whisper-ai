@@ -1,4 +1,5 @@
-import { Calendar, Home, ClipboardList, Building2, Bell, Users, Shield } from 'lucide-react';
+import { Calendar, Home, ClipboardList, Building2, Bell, Users, Shield, Globe } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SideNavProps {
   activeSection: string;
@@ -7,16 +8,20 @@ interface SideNavProps {
   pendingAlerts: number;
 }
 
-const navItems = [
-  { id: 'timeline', icon: Home, label: 'Timeline' },
-  { id: 'calendar', icon: Calendar, label: 'Calendar' },
-  { id: 'properties', icon: Building2, label: 'Properties' },
-  { id: 'tasks', icon: ClipboardList, label: 'Tasks' },
-  { id: 'community', icon: Users, label: 'Community' },
-  { id: 'regulatory', icon: Shield, label: 'Regulatory' },
-];
-
 const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: SideNavProps) => {
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems = [
+    { id: 'timeline', icon: Home, label: t('nav.timeline') },
+    { id: 'calendar', icon: Calendar, label: t('nav.calendar') },
+    { id: 'properties', icon: Building2, label: t('nav.properties') },
+    { id: 'tasks', icon: ClipboardList, label: t('nav.tasks') },
+    { id: 'community', icon: Users, label: t('nav.community') },
+    { id: 'regulatory', icon: Shield, label: t('nav.regulatory') },
+  ];
+
+  const toggleLang = () => setLanguage(language === 'th' ? 'en' : 'th');
+
   return (
     <>
       {/* Desktop sidebar */}
@@ -42,14 +47,24 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
 
         <div className="mt-auto flex flex-col gap-3 items-center">
           <div className="text-center px-1">
-            <div className="text-[8px] text-sidebar-foreground/30 font-display uppercase tracking-widest">Rev</div>
-            <div className="text-[11px] font-display font-bold text-accent">
-              ฿{(revenue / 1000).toFixed(0)}k
-            </div>
+            <div className="text-[8px] text-sidebar-foreground/30 font-display uppercase tracking-widest">{t('nav.revenue')}</div>
+            <div className="text-[11px] font-display font-bold text-accent">฿{(revenue / 1000).toFixed(0)}k</div>
           </div>
 
+          {/* Language toggle */}
+          <button
+            onClick={toggleLang}
+            className="nav-icon-btn group relative"
+            title={language === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'}
+          >
+            <Globe size={18} strokeWidth={1.8} />
+            <span className="absolute -bottom-0.5 -right-0.5 text-[8px] font-display font-bold text-accent bg-sidebar-accent rounded px-0.5">
+              {t('lang.switch')}
+            </span>
+          </button>
+
           <div className="relative">
-            <button className="nav-icon-btn" title="Notifications">
+            <button className="nav-icon-btn" title={t('nav.alerts')}>
               <Bell size={20} strokeWidth={1.8} />
             </button>
             {pendingAlerts > 0 && (
@@ -63,7 +78,7 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
 
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sidebar flex justify-around items-center h-16 z-30 border-t border-sidebar-border pb-safe">
-        {navItems.slice(0, 5).map((item) => (
+        {navItems.slice(0, 4).map((item) => (
           <button
             key={item.id}
             onClick={() => onSectionChange(item.id)}
@@ -75,13 +90,20 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
             <span className="text-[9px] font-display font-medium">{item.label}</span>
           </button>
         ))}
+
+        {/* Mobile language toggle */}
+        <button
+          onClick={toggleLang}
+          className="flex flex-col items-center gap-0.5 py-1 px-2 text-sidebar-foreground/50"
+        >
+          <Globe size={20} strokeWidth={1.8} />
+          <span className="text-[9px] font-display font-medium">{language === 'th' ? 'EN' : 'TH'}</span>
+        </button>
+
         <div className="relative">
-          <button
-            className="flex flex-col items-center gap-0.5 py-1 px-2 text-sidebar-foreground/50"
-            title="Notifications"
-          >
+          <button className="flex flex-col items-center gap-0.5 py-1 px-2 text-sidebar-foreground/50">
             <Bell size={20} strokeWidth={1.8} />
-            <span className="text-[9px] font-display font-medium">Alerts</span>
+            <span className="text-[9px] font-display font-medium">{t('nav.alerts')}</span>
           </button>
           {pendingAlerts > 0 && (
             <span className="absolute top-0 right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[9px] font-display font-bold flex items-center justify-center">
