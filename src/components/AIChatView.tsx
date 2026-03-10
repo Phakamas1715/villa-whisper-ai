@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Send, User, Sparkles, Globe, Clock, Building2, ChevronDown } from 'lucide-react';
+import { Bot, Send, User, Sparkles, Globe, Clock, Building2, ChevronDown, Pencil, Check, X } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
