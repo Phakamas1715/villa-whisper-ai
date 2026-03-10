@@ -1,5 +1,5 @@
 import { mockTimeline, propertyImages } from '@/data/mockData';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, Loader2, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -11,7 +11,10 @@ const TasksView = () => {
 
   return (
     <div>
-      <h2 className="font-display font-bold text-lg text-foreground mb-1">{t('tasks.title')}</h2>
+      <div className="flex items-center gap-2 mb-1">
+        <Sparkles size={20} className="text-villa-gold" />
+        <h2 className="font-display font-bold text-lg text-foreground">{t('tasks.title')}</h2>
+      </div>
       <p className="font-body text-xs text-muted-foreground mb-5">{t('tasks.subtitle')}</p>
 
       {active.length > 0 && (
@@ -22,9 +25,17 @@ const TasksView = () => {
               const img = propertyImages[item.data.property as string];
               return (
                 <motion.div key={item.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: idx * 0.06 }} className="glass-card p-0 overflow-hidden">
-                  {img && <img src={img} alt="" className="w-full h-28 object-cover" />}
+                  {img && (
+                    <div className="relative h-32 overflow-hidden">
+                      <img src={img} alt="" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
+                      <div className="absolute bottom-2 left-3">
+                        <span className="font-display text-sm font-bold text-primary-foreground">{item.data.property as string}</span>
+                      </div>
+                    </div>
+                  )}
                   <div className="p-4">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-2">
                       <Loader2 size={14} className="text-villa-gold animate-spin" />
                       <span className="font-display text-sm font-semibold text-foreground">{item.title}</span>
                     </div>
@@ -33,8 +44,8 @@ const TasksView = () => {
                     {item.data.checklist && (
                       <div className="mt-3 space-y-2">
                         {(item.data.checklist as string[]).map((c, i) => (
-                          <div key={i} className="flex items-center gap-2 font-body text-xs text-muted-foreground">
-                            <div className="w-4 h-4 rounded border-2 border-muted-foreground/20 flex-shrink-0" />{c}
+                          <div key={i} className="flex items-center gap-2.5 font-body text-xs text-muted-foreground">
+                            <div className="w-4 h-4 rounded-md border-2 border-border flex-shrink-0" />{c}
                           </div>
                         ))}
                       </div>
