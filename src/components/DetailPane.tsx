@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   CalendarCheck, User, MapPin, DollarSign, CheckCircle2, Clock,
-  AlertTriangle, MessageCircle, X, Shield, QrCode, Bot, Send, TrendingUp,
+  AlertTriangle, MessageCircle, X, Shield, QrCode, Bot, Send, TrendingUp, Pencil,
 } from 'lucide-react';
 import GenerativeArt from './GenerativeArt';
 import { propertyImages } from '@/data/mockData';
