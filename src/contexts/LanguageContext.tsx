@@ -123,10 +123,16 @@ const translations: Translations = {
   'regulatory.subtitle': { th: 'TM30 · TDAC · ภาษี — จัดการอัตโนมัติ', en: 'TM30 · TDAC · Tax — Fully Automated' },
   'regulatory.auto_generate': { th: 'สร้างอัตโนมัติ', en: 'Auto-generate' },
   'regulatory.export_tax': { th: 'ส่งออกภาษี', en: 'Export Tax' },
+  'regulatory.guest_report': { th: 'รายงานแขก', en: 'Guest Report' },
   'regulatory.action_required': { th: 'ต้องดำเนินการ', en: 'Action Required' },
   'regulatory.completed': { th: 'เสร็จสิ้น', en: 'Completed' },
   'regulatory.urgent': { th: 'เร่งด่วน!', en: 'Urgent!' },
   'regulatory.submit_now': { th: 'ส่งตอนนี้', en: 'Submit Now' },
+  'regulatory.recent_docs': { th: 'เอกสารล่าสุด', en: 'Recent Documents' },
+  'regulatory.tm30_preview': { th: 'ตัวอย่างเอกสาร TM30', en: 'TM30 Document Preview' },
+  'regulatory.tdac_preview': { th: 'ตัวอย่างรายงาน TDAC', en: 'TDAC Report Preview' },
+  'regulatory.tax_preview': { th: 'สรุปภาษี ภ.ง.ด.', en: 'Tax Summary (PND)' },
+  'regulatory.auto_filled': { th: 'กรอกอัตโนมัติ', en: 'Auto-filled' },
 
   // Language
   'lang.switch': { th: 'EN', en: 'TH' },
