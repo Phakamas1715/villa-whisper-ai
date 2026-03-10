@@ -142,8 +142,10 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
             )}
 
             {item.type === 'booking' && item.data.totalPrice && (
-              <div className="mt-2.5 flex items-center gap-2">
+              <div className="mt-2.5 flex items-center gap-2 flex-wrap">
                 <span className="font-display text-lg font-bold text-accent">฿{(item.data.totalPrice as number).toLocaleString()}</span>
+                {platformIcon(item.data.source as string)}
+              </div>
                 <span className="badge-muted">{item.data.source as string}</span>
               </div>
             )}
