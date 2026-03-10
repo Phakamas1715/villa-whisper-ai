@@ -40,9 +40,28 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
         return <span className="inline-flex items-center gap-1 text-sm font-display font-semibold px-3 py-1.5 rounded-full bg-villa-gold/10 text-villa-gold"><Clock size={12} /> {t('stats.pending')}</span>;
       case 'reported':
         return <span className="badge-destructive flex items-center gap-1"><AlertTriangle size={12} /> {t('timeline.damage')}</span>;
+      case 'replied':
+        return <span className="badge-accent flex items-center gap-1"><CheckCircle2 size={12} /> {t('timeline.replied')}</span>;
       default:
         return null;
     }
+  };
+
+  const platformIcon = (platform?: string) => {
+    if (!platform) return null;
+    const colors: Record<string, string> = {
+      'Airbnb': 'bg-[#FF5A5F]/10 text-[#FF5A5F]',
+      'Booking.com': 'bg-[#003580]/10 text-[#003580] dark:bg-[#003580]/20 dark:text-[#5B9BD5]',
+      'LINE': 'bg-[#06C755]/10 text-[#06C755]',
+      'Facebook': 'bg-[#1877F2]/10 text-[#1877F2]',
+      'Agoda': 'bg-[#5542F6]/10 text-[#5542F6]',
+      'WhatsApp': 'bg-[#25D366]/10 text-[#25D366]',
+    };
+    return (
+      <span className={`text-xs font-display font-bold px-2.5 py-1 rounded-full ${colors[platform] || 'bg-muted text-muted-foreground'}`}>
+        {platform}
+      </span>
+    );
   };
 
   const formatTime = (ts: string) => new Date(ts).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
@@ -99,6 +118,17 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
             <h3 className="font-display font-semibold text-base text-foreground leading-snug">{item.title}</h3>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mt-1">{item.subtitle}</p>
 
+            {item.type === 'inquiry' && (
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                {platformIcon(item.data.platform as string)}
+                {item.data.language && (
+                  <span className="text-xs font-display text-muted-foreground">
+                    {item.data.language === 'th' ? '🇹🇭' : item.data.language === 'en' ? '🇬🇧' : item.data.language === 'ja' ? '🇯🇵' : item.data.language === 'zh' ? '🇨🇳' : item.data.language === 'ko' ? '🇰🇷' : '🌐'} {(item.data.language as string).toUpperCase()}
+                  </span>
+                )}
+              </div>
+            )}
+
             {item.type === 'inquiry' && item.data.aiResponse && (
               <div className="mt-3 bg-accent/5 rounded-xl p-3 border border-accent/15">
                 <div className="flex items-center gap-1.5 mb-1.5">
@@ -112,9 +142,9 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
             )}
 
             {item.type === 'booking' && item.data.totalPrice && (
-              <div className="mt-2.5 flex items-center gap-2">
+              <div className="mt-2.5 flex items-center gap-2 flex-wrap">
                 <span className="font-display text-lg font-bold text-accent">฿{(item.data.totalPrice as number).toLocaleString()}</span>
-                <span className="badge-muted">{item.data.source as string}</span>
+                {platformIcon(item.data.source as string)}
               </div>
             )}
 

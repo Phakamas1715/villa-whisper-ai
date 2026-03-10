@@ -170,6 +170,15 @@ const translations: Translations = {
   'chat.confidence': { th: 'ความมั่นใจ', en: 'Confidence' },
   'chat.context': { th: 'บริบท', en: 'Context' },
   'chat.ai_mode': { th: 'AI ตอบอัตโนมัติ', en: 'AI Auto-reply' },
+  'chat.edit_reply': { th: 'แก้ไขคำตอบ', en: 'Edit Reply' },
+  'chat.send_reply': { th: 'ส่งคำตอบ', en: 'Send Reply' },
+  'chat.cancel': { th: 'ยกเลิก', en: 'Cancel' },
+  'chat.save': { th: 'บันทึก', en: 'Save' },
+  'chat.edited': { th: 'แก้ไขแล้ว', en: 'Edited' },
+  'chat.platform': { th: 'แพลตฟอร์ม', en: 'Platform' },
+  'timeline.replied': { th: 'ตอบแล้ว', en: 'Replied' },
+  'detail.edit_response': { th: 'แก้ไขคำตอบ', en: 'Edit Response' },
+  'detail.platform_source': { th: 'แพลตฟอร์ม', en: 'Platform' },
 
   // Landing Page
   'landing.nav.features': { th: 'ฟีเจอร์', en: 'Features' },

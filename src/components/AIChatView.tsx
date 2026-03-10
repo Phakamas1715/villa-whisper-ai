@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Send, User, Sparkles, Globe, Clock, Building2, ChevronDown } from 'lucide-react';
+import { Bot, Send, User, Sparkles, Globe, Clock, Building2, ChevronDown, Pencil, Check, X } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
@@ -11,6 +11,7 @@ interface ChatMessage {
   language?: string;
   timestamp: Date;
   typing?: boolean;
+  edited?: boolean;
 }
 
 const mockResponses: Record<string, { th: string; en: string; confidence: number }> = {
@@ -56,6 +57,8 @@ const AIChatView = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editText, setEditText] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -171,7 +174,7 @@ const AIChatView = () => {
                   <p className={`font-body text-base leading-relaxed ${msg.role === 'user' ? '' : 'text-foreground'}`}>{msg.content}</p>
                 </div>
                 {msg.role === 'assistant' && (
-                  <div className="flex items-center gap-3 mt-1.5 px-1">
+                  <div className="flex items-center gap-3 mt-1.5 px-1 flex-wrap">
                     {msg.confidence && (
                       <div className="flex items-center gap-1">
                         <Sparkles size={13} className="text-accent" />
@@ -192,6 +195,55 @@ const AIChatView = () => {
                       <Clock size={11} />
                       {msg.timestamp.toLocaleTimeString(language === 'th' ? 'th-TH' : 'en-US', { hour: '2-digit', minute: '2-digit' })}
                     </span>
+                    {msg.edited && (
+                      <span className="font-display text-xs text-accent font-semibold">({t('chat.edited')})</span>
+                    )}
+                    {/* Edit / Send buttons */}
+                    {editingId !== msg.id && (
+                      <div className="flex items-center gap-1 ml-auto">
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setEditingId(msg.id); setEditText(msg.content); }}
+                          className="p-1.5 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                          title={t('chat.edit_reply')}
+                        >
+                          <Pencil size={13} />
+                        </button>
+                        <button
+                          className="p-1.5 rounded-lg hover:bg-accent/10 transition-colors text-accent"
+                          title={t('chat.send_reply')}
+                        >
+                          <Send size={13} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+                {/* Inline edit area */}
+                {editingId === msg.id && (
+                  <div className="mt-2 space-y-2">
+                    <textarea
+                      value={editText}
+                      onChange={(e) => setEditText(e.target.value)}
+                      className="w-full h-24 rounded-lg bg-background border border-border p-3 font-body text-sm text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-accent/30"
+                    />
+                    <div className="flex gap-2">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setMessages(prev => prev.map(m => m.id === msg.id ? { ...m, content: editText, edited: true } : m));
+                          setEditingId(null);
+                        }}
+                        className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-accent text-accent-foreground text-xs font-display font-semibold hover:bg-accent/90 transition-colors"
+                      >
+                        <Check size={13} /> {t('chat.save')}
+                      </button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setEditingId(null); }}
+                        className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-muted text-muted-foreground text-xs font-display font-semibold hover:bg-muted/80 transition-colors"
+                      >
+                        <X size={13} /> {t('chat.cancel')}
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
