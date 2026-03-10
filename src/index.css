@@ -175,7 +175,7 @@
   }
 
   .nav-icon-btn {
-    @apply flex items-center justify-center w-11 h-11 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
+    @apply flex items-center justify-center w-12 h-12 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
   }
   .nav-icon-btn.active {
     @apply text-sidebar-primary bg-sidebar-accent shadow-sm;

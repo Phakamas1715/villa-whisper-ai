@@ -24,7 +24,6 @@ const HeroSection = () => {
 
   return (
     <div className="mb-8 space-y-5">
-      {/* Main hero with image carousel */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -49,31 +48,28 @@ const HeroSection = () => {
               <span className="badge-accent shadow-sm">AI Powered</span>
               <span className="badge-accent shadow-sm">Zero-Phone</span>
             </div>
-            <h1 className="font-display font-extrabold text-2xl md:text-3xl text-primary-foreground leading-tight">
+            <h1 className="font-display font-extrabold text-2xl md:text-4xl text-primary-foreground leading-tight">
               {t('app.title')}
             </h1>
-            <p className="font-body text-sm text-primary-foreground/80 mt-1 max-w-md">{t('app.tagline')}</p>
+            <p className="font-body text-base text-primary-foreground/80 mt-1 max-w-md">{t('app.tagline')}</p>
             <div className="flex items-center gap-2 mt-3">
-              <span className="font-display text-xs text-primary-foreground/60">
+              <span className="font-display text-sm text-primary-foreground/60">
                 {t('app.properties_count')} · {new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' })}
               </span>
             </div>
           </div>
-
-          {/* Image dots */}
           <div className="absolute bottom-4 right-4 flex gap-1.5">
             {heroImages.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveImg(i)}
-                className={`w-2 h-2 rounded-full transition-all ${activeImg === i ? 'bg-accent w-5' : 'bg-primary-foreground/40 hover:bg-primary-foreground/60'}`}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${activeImg === i ? 'bg-accent w-6' : 'bg-primary-foreground/40 hover:bg-primary-foreground/60'}`}
               />
             ))}
           </div>
         </div>
       </motion.div>
 
-      {/* Gallery thumbnails strip */}
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -84,19 +80,18 @@ const HeroSection = () => {
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
-            className="flex-shrink-0 w-20 h-14 rounded-xl overflow-hidden cursor-pointer ring-2 ring-transparent hover:ring-accent/50 transition-all"
+            className="flex-shrink-0 w-22 h-16 rounded-xl overflow-hidden cursor-pointer ring-2 ring-transparent hover:ring-accent/50 transition-all"
           >
             <img src={img} alt="" className="w-full h-full object-cover" />
           </motion.div>
         ))}
-        <div className="flex-shrink-0 w-20 h-14 rounded-xl bg-muted flex items-center justify-center cursor-pointer hover:bg-muted/80 transition-colors">
-          <span className="text-xs text-muted-foreground font-display font-semibold flex items-center gap-0.5">
-            +12 <ChevronRight size={12} />
+        <div className="flex-shrink-0 w-22 h-16 rounded-xl bg-muted flex items-center justify-center cursor-pointer hover:bg-muted/80 transition-colors">
+          <span className="text-sm text-muted-foreground font-display font-semibold flex items-center gap-0.5">
+            +12 <ChevronRight size={14} />
           </span>
         </div>
       </motion.div>
 
-      {/* Stats grid */}
       <div className="grid grid-cols-3 lg:grid-cols-6 gap-2">
         {stats.map((stat, idx) => (
           <motion.div
@@ -106,10 +101,10 @@ const HeroSection = () => {
             transition={{ duration: 0.4, delay: 0.2 + idx * 0.05 }}
             className="stat-card text-center group hover:ring-1 hover:ring-accent/20"
           >
-            <stat.icon size={16} className={`mx-auto mb-1.5 transition-transform group-hover:scale-110 ${stat.positive ? 'text-accent' : 'text-muted-foreground'}`} />
+            <stat.icon size={18} className={`mx-auto mb-1.5 transition-transform group-hover:scale-110 ${stat.positive ? 'text-accent' : 'text-muted-foreground'}`} />
             <div className="font-display text-xl font-bold text-foreground leading-none">{stat.value}</div>
-            <div className="font-display text-[10px] text-muted-foreground mt-1">{stat.label}</div>
-            <div className={`font-display text-[10px] font-semibold mt-0.5 ${stat.positive ? 'text-accent' : 'text-muted-foreground'}`}>{stat.sub}</div>
+            <div className="font-display text-xs text-muted-foreground mt-1">{stat.label}</div>
+            <div className={`font-display text-xs font-semibold mt-0.5 ${stat.positive ? 'text-accent' : 'text-muted-foreground'}`}>{stat.sub}</div>
           </motion.div>
         ))}
       </div>
