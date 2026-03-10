@@ -1,6 +1,9 @@
 import villaSeaview from '@/assets/villa-seaview.jpg';
 import villaSunset from '@/assets/villa-sunset.jpg';
 import villaHillside from '@/assets/villa-hillside.jpg';
+import villaPoolNight from '@/assets/villa-pool-night.jpg';
+import villaBeachfront from '@/assets/villa-beachfront.jpg';
+import villaInterior from '@/assets/villa-interior.jpg';
 
 export type TimelineItemType = 'booking' | 'task' | 'damage' | 'inquiry' | 'pricing' | 'regulatory' | 'community' | 'guest_flow';
 
@@ -18,7 +21,12 @@ export const propertyImages: Record<string, string> = {
   'Villa Seaview': villaSeaview,
   'Villa Sunset': villaSunset,
   'Villa Hillside': villaHillside,
+  'Villa Pool Night': villaPoolNight,
+  'Villa Beachfront': villaBeachfront,
+  'Villa Interior': villaInterior,
 };
+
+export const galleryImages = [villaSeaview, villaSunset, villaHillside, villaPoolNight, villaBeachfront, villaInterior];
 
 export const mockTimeline: TimelineItem[] = [
   {
@@ -194,9 +202,11 @@ export const dashboardStats = {
 };
 
 export const properties = [
-  { id: 'p1', name: 'Villa Seaview', location: 'พัทยา', bedrooms: 3, bathrooms: 2, basePrice: 9500, status: 'active' as const, occupancy: 82, nextCheckIn: 'Mar 15', rating: 4.9, reviews: 47 },
-  { id: 'p2', name: 'Villa Sunset', location: 'พัทยา', bedrooms: 4, bathrooms: 3, basePrice: 12000, status: 'active' as const, occupancy: 71, nextCheckIn: 'Mar 18', rating: 4.8, reviews: 32 },
-  { id: 'p3', name: 'Villa Hillside', location: 'ขอนแก่น', bedrooms: 2, bathrooms: 2, basePrice: 7500, status: 'maintenance' as const, occupancy: 65, nextCheckIn: 'Mar 22', rating: 4.7, reviews: 28 },
+  { id: 'p1', name: 'Villa Seaview', location: 'พัทยา', bedrooms: 3, bathrooms: 2, basePrice: 9500, status: 'active' as const, occupancy: 82, nextCheckIn: 'Mar 15', rating: 4.9, reviews: 47, image: villaSeaview },
+  { id: 'p2', name: 'Villa Sunset', location: 'พัทยา', bedrooms: 4, bathrooms: 3, basePrice: 12000, status: 'active' as const, occupancy: 71, nextCheckIn: 'Mar 18', rating: 4.8, reviews: 32, image: villaSunset },
+  { id: 'p3', name: 'Villa Hillside', location: 'ขอนแก่น', bedrooms: 2, bathrooms: 2, basePrice: 7500, status: 'maintenance' as const, occupancy: 65, nextCheckIn: 'Mar 22', rating: 4.7, reviews: 28, image: villaHillside },
+  { id: 'p4', name: 'Villa Beachfront', location: 'ภูเก็ต', bedrooms: 5, bathrooms: 4, basePrice: 18000, status: 'active' as const, occupancy: 88, nextCheckIn: 'Mar 12', rating: 4.95, reviews: 63, image: villaBeachfront },
+  { id: 'p5', name: 'Villa Pool Night', location: 'สมุย', bedrooms: 3, bathrooms: 3, basePrice: 14000, status: 'active' as const, occupancy: 75, nextCheckIn: 'Mar 20', rating: 4.85, reviews: 41, image: villaPoolNight },
 ];
 
 export const calendarEvents = [
@@ -204,6 +214,7 @@ export const calendarEvents = [
   { id: 'e2', property: 'Villa Sunset', guest: 'คุณสมชาย (Pending)', checkIn: '2026-04-12', checkOut: '2026-04-16', status: 'pending' as const },
   { id: 'e3', property: 'Villa Hillside', guest: 'Ms. Kim (Korea)', checkIn: '2026-03-22', checkOut: '2026-03-25', status: 'confirmed' as const },
   { id: 'e4', property: 'Villa Seaview', guest: 'Songkran Group', checkIn: '2026-04-10', checkOut: '2026-04-17', status: 'pending' as const },
+  { id: 'e5', property: 'Villa Beachfront', guest: 'The Johnsons', checkIn: '2026-03-12', checkOut: '2026-03-18', status: 'confirmed' as const },
 ];
 
 export const communityPosts = [
