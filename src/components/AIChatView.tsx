@@ -11,6 +11,7 @@ interface ChatMessage {
   language?: string;
   timestamp: Date;
   typing?: boolean;
+  edited?: boolean;
 }
 
 const mockResponses: Record<string, { th: string; en: string; confidence: number }> = {
