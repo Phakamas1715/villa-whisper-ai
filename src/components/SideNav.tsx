@@ -1,4 +1,4 @@
-import { Calendar, Home, ClipboardList, Building2, Bell, Users, Shield, Globe, Zap } from 'lucide-react';
+import { Calendar, Home, ClipboardList, Building2, Bell, Users, Shield, Globe, Zap, BarChart3 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 
