@@ -54,11 +54,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SideNav activeSection={activeSection} onSectionChange={setActiveSection} revenue={revenueThisMonth} pendingAlerts={pendingAlerts} />
-      <div className="md:ml-[72px] pb-20 md:pb-0">
+      <div className="md:ml-[80px] pb-24 md:pb-0">
         <div className="max-w-6xl mx-auto flex gap-5 p-4 lg:p-6 min-h-screen">
           <div className="flex-1 min-w-0 lg:max-w-2xl">{renderSection()}</div>
           {activeSection === 'timeline' && (
-            <div className="hidden lg:block w-80 xl:w-[380px] flex-shrink-0 sticky top-6 self-start max-h-[calc(100vh-3rem)]">
+            <div className="hidden lg:block w-80 xl:w-[400px] flex-shrink-0 sticky top-6 self-start max-h-[calc(100vh-3rem)]">
               <DetailPane item={selectedItem} onClose={handleCloseDetail} />
             </div>
           )}

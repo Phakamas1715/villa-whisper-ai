@@ -71,10 +71,10 @@ const AnalyticsView = () => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-1">
-        <BarChart3 size={20} className="text-accent" />
-        <h2 className="font-display font-bold text-lg text-foreground">{t('analytics.title')}</h2>
+        <BarChart3 size={22} className="text-accent" />
+        <h2 className="font-display font-bold text-xl text-foreground">{t('analytics.title')}</h2>
       </div>
-      <p className="font-body text-xs text-muted-foreground mb-5">{t('analytics.subtitle')}</p>
+      <p className="font-body text-sm text-muted-foreground mb-5">{t('analytics.subtitle')}</p>
 
       {/* Summary Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
@@ -86,10 +86,10 @@ const AnalyticsView = () => {
             transition={{ duration: 0.4, delay: idx * 0.06 }}
             className="stat-card text-center group hover:ring-1 hover:ring-accent/20"
           >
-            <stat.icon size={16} className="mx-auto mb-1.5 text-accent transition-transform group-hover:scale-110" />
-            <div className="font-display text-xl font-bold text-foreground leading-none">{stat.value}</div>
-            <div className="font-display text-[10px] text-muted-foreground mt-1">{stat.label}</div>
-            <div className={`font-display text-[10px] font-semibold mt-0.5 ${stat.positive ? 'text-accent' : 'text-muted-foreground'}`}>{stat.sub}</div>
+            <stat.icon size={20} className="mx-auto mb-2 text-accent transition-transform group-hover:scale-110" />
+            <div className="font-display text-2xl font-bold text-foreground leading-none">{stat.value}</div>
+            <div className="font-display text-xs text-muted-foreground mt-1.5">{stat.label}</div>
+            <div className={`font-display text-xs font-semibold mt-0.5 ${stat.positive ? 'text-accent' : 'text-muted-foreground'}`}>{stat.sub}</div>
           </motion.div>
         ))}
       </div>
@@ -98,12 +98,12 @@ const AnalyticsView = () => {
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="glass-card p-5 mb-4">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="font-display text-sm font-bold text-foreground">{t('analytics.daily_revenue')}</h3>
-            <p className="font-display text-[10px] text-muted-foreground">{t('analytics.march_2026')}</p>
+            <h3 className="font-display text-base font-bold text-foreground">{t('analytics.daily_revenue')}</h3>
+            <p className="font-display text-xs text-muted-foreground">{t('analytics.march_2026')}</p>
           </div>
           <span className="badge-accent">+18.5%</span>
         </div>
-        <div className="h-48">
+        <div className="h-52">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={dailyRevenue}>
               <defs>
@@ -113,10 +113,10 @@ const AnalyticsView = () => {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 16%, 90%)" />
-              <XAxis dataKey="day" tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v / 1000}k`} />
+              <XAxis dataKey="day" tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v / 1000}k`} />
               <Tooltip
-                contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '11px', fontFamily: 'Plus Jakarta Sans' }}
+                contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '13px', fontFamily: 'Plus Jakarta Sans' }}
                 formatter={(value: number) => [`฿${value.toLocaleString()}`, t('analytics.revenue')]}
               />
               <Area type="monotone" dataKey="revenue" stroke="hsl(152, 56%, 45%)" strokeWidth={2.5} fill="url(#revGrad)" />
@@ -129,19 +129,19 @@ const AnalyticsView = () => {
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="glass-card p-5 mb-4">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="font-display text-sm font-bold text-foreground">{t('analytics.monthly_overview')}</h3>
-            <p className="font-display text-[10px] text-muted-foreground">{t('analytics.revenue_and_occupancy')}</p>
+            <h3 className="font-display text-base font-bold text-foreground">{t('analytics.monthly_overview')}</h3>
+            <p className="font-display text-xs text-muted-foreground">{t('analytics.revenue_and_occupancy')}</p>
           </div>
         </div>
-        <div className="h-52">
+        <div className="h-56">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={monthlyRevenue}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 16%, 90%)" />
-              <XAxis dataKey="month" tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} />
-              <YAxis yAxisId="rev" tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v / 1000}k`} />
-              <YAxis yAxisId="occ" orientation="right" tick={{ fontSize: 10, fill: 'hsl(200, 65%, 48%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} />
+              <YAxis yAxisId="rev" tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v / 1000}k`} />
+              <YAxis yAxisId="occ" orientation="right" tick={{ fontSize: 12, fill: 'hsl(200, 65%, 48%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
               <Tooltip
-                contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '11px', fontFamily: 'Plus Jakarta Sans' }}
+                contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '13px', fontFamily: 'Plus Jakarta Sans' }}
                 formatter={(value: number, name: string) => {
                   if (name === 'revenue') return [`฿${value.toLocaleString()}`, t('analytics.revenue')];
                   return [`${value}%`, t('analytics.occupancy')];
@@ -153,22 +153,22 @@ const AnalyticsView = () => {
           </ResponsiveContainer>
         </div>
         <div className="flex items-center gap-5 mt-3 justify-center">
-          <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-accent" /><span className="font-display text-[10px] text-muted-foreground">{t('analytics.revenue')}</span></div>
-          <div className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-villa-ocean" /><span className="font-display text-[10px] text-muted-foreground">{t('analytics.occupancy')}</span></div>
+          <div className="flex items-center gap-1.5"><div className="w-3.5 h-3.5 rounded-sm bg-accent" /><span className="font-display text-xs text-muted-foreground">{t('analytics.revenue')}</span></div>
+          <div className="flex items-center gap-1.5"><div className="w-3.5 h-3.5 rounded-full bg-villa-ocean" /><span className="font-display text-xs text-muted-foreground">{t('analytics.occupancy')}</span></div>
         </div>
       </motion.div>
 
       {/* Two column: Occupancy by Property + Source Pie */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="glass-card p-5">
-          <h3 className="font-display text-sm font-bold text-foreground mb-4">{t('analytics.occupancy_by_property')}</h3>
-          <div className="h-44">
+          <h3 className="font-display text-base font-bold text-foreground mb-4">{t('analytics.occupancy_by_property')}</h3>
+          <div className="h-48">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={occupancyByProperty} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 16%, 90%)" horizontal={false} />
-                <XAxis type="number" tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} domain={[0, 100]} tickFormatter={(v) => `${v}%`} />
-                <YAxis dataKey="name" type="category" tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} width={70} />
-                <Tooltip contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '11px' }} formatter={(v: number) => [`${v}%`, t('analytics.occupancy')]} />
+                <XAxis type="number" tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} domain={[0, 100]} tickFormatter={(v) => `${v}%`} />
+                <YAxis dataKey="name" type="category" tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} width={80} />
+                <Tooltip contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '13px' }} formatter={(v: number) => [`${v}%`, t('analytics.occupancy')]} />
                 <Bar dataKey="occupancy" fill="hsl(152, 56%, 45%)" radius={[0, 6, 6, 0]} opacity={0.85} />
               </BarChart>
             </ResponsiveContainer>
@@ -176,23 +176,23 @@ const AnalyticsView = () => {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="glass-card p-5">
-          <h3 className="font-display text-sm font-bold text-foreground mb-4">{t('analytics.booking_sources')}</h3>
-          <div className="h-44 flex items-center">
+          <h3 className="font-display text-base font-bold text-foreground mb-4">{t('analytics.booking_sources')}</h3>
+          <div className="h-48 flex items-center">
             <div className="w-1/2">
-              <ResponsiveContainer width="100%" height={140}>
+              <ResponsiveContainer width="100%" height={150}>
                 <PieChart>
-                  <Pie data={sourceData} cx="50%" cy="50%" innerRadius={35} outerRadius={55} dataKey="value" strokeWidth={2} stroke="hsl(0, 0%, 100%)">
+                  <Pie data={sourceData} cx="50%" cy="50%" innerRadius={38} outerRadius={60} dataKey="value" strokeWidth={2} stroke="hsl(0, 0%, 100%)">
                     {sourceData.map((entry, idx) => <Cell key={idx} fill={entry.color} />)}
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="w-1/2 space-y-2.5">
+            <div className="w-1/2 space-y-3">
               {sourceData.map((s) => (
                 <div key={s.name} className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} />
-                  <span className="font-display text-[11px] text-foreground flex-1">{s.name}</span>
-                  <span className="font-display text-[11px] font-bold text-foreground">{s.value}%</span>
+                  <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} />
+                  <span className="font-display text-sm text-foreground flex-1">{s.name}</span>
+                  <span className="font-display text-sm font-bold text-foreground">{s.value}%</span>
                 </div>
               ))}
             </div>
@@ -204,33 +204,33 @@ const AnalyticsView = () => {
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className="glass-card p-5">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="font-display text-sm font-bold text-foreground">{t('analytics.seasonal_trends')}</h3>
-            <p className="font-display text-[10px] text-muted-foreground">{t('analytics.demand_vs_price')}</p>
+            <h3 className="font-display text-base font-bold text-foreground">{t('analytics.seasonal_trends')}</h3>
+            <p className="font-display text-xs text-muted-foreground">{t('analytics.demand_vs_price')}</p>
           </div>
-          <Users size={16} className="text-muted-foreground" />
+          <Users size={18} className="text-muted-foreground" />
         </div>
-        <div className="h-52">
+        <div className="h-56">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={seasonalData}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(210, 16%, 90%)" />
-              <XAxis dataKey="period" tick={{ fontSize: 10, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} />
-              <YAxis yAxisId="demand" tick={{ fontSize: 10, fill: 'hsl(152, 56%, 45%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
-              <YAxis yAxisId="price" orientation="right" tick={{ fontSize: 10, fill: 'hsl(38, 80%, 58%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v / 1000}k`} />
+              <XAxis dataKey="period" tick={{ fontSize: 12, fill: 'hsl(210, 10%, 50%)' }} axisLine={false} tickLine={false} />
+              <YAxis yAxisId="demand" tick={{ fontSize: 12, fill: 'hsl(152, 56%, 45%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+              <YAxis yAxisId="price" orientation="right" tick={{ fontSize: 12, fill: 'hsl(38, 80%, 58%)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v / 1000}k`} />
               <Tooltip
-                contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '11px', fontFamily: 'Plus Jakarta Sans' }}
+                contentStyle={{ backgroundColor: 'hsl(0, 0%, 100%)', border: '1px solid hsl(210, 16%, 90%)', borderRadius: '12px', fontSize: '13px', fontFamily: 'Plus Jakarta Sans' }}
                 formatter={(value: number, name: string) => {
                   if (name === 'demand') return [`${value}%`, t('analytics.demand')];
                   return [`฿${value.toLocaleString()}`, t('analytics.avg_price')];
                 }}
               />
-              <Line yAxisId="demand" type="monotone" dataKey="demand" stroke="hsl(152, 56%, 45%)" strokeWidth={2.5} dot={{ r: 3 }} />
-              <Line yAxisId="price" type="monotone" dataKey="price" stroke="hsl(38, 80%, 58%)" strokeWidth={2.5} dot={{ r: 3 }} strokeDasharray="5 5" />
+              <Line yAxisId="demand" type="monotone" dataKey="demand" stroke="hsl(152, 56%, 45%)" strokeWidth={2.5} dot={{ r: 4 }} />
+              <Line yAxisId="price" type="monotone" dataKey="price" stroke="hsl(38, 80%, 58%)" strokeWidth={2.5} dot={{ r: 4 }} strokeDasharray="5 5" />
             </LineChart>
           </ResponsiveContainer>
         </div>
         <div className="flex items-center gap-5 mt-3 justify-center">
-          <div className="flex items-center gap-1.5"><div className="w-3 h-0.5 bg-accent rounded" /><span className="font-display text-[10px] text-muted-foreground">{t('analytics.demand')}</span></div>
-          <div className="flex items-center gap-1.5"><div className="w-3 h-0.5 bg-villa-gold rounded" style={{ borderStyle: 'dashed' }} /><span className="font-display text-[10px] text-muted-foreground">{t('analytics.avg_price')}</span></div>
+          <div className="flex items-center gap-1.5"><div className="w-4 h-0.5 bg-accent rounded" /><span className="font-display text-xs text-muted-foreground">{t('analytics.demand')}</span></div>
+          <div className="flex items-center gap-1.5"><div className="w-4 h-0.5 bg-villa-gold rounded" style={{ borderStyle: 'dashed' }} /><span className="font-display text-xs text-muted-foreground">{t('analytics.avg_price')}</span></div>
         </div>
       </motion.div>
     </div>

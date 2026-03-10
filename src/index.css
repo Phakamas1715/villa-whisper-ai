@@ -134,7 +134,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -174,7 +175,7 @@
   }
 
   .nav-icon-btn {
-    @apply flex items-center justify-center w-11 h-11 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
+    @apply flex items-center justify-center w-12 h-12 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
   }
   .nav-icon-btn.active {
     @apply text-sidebar-primary bg-sidebar-accent shadow-sm;
@@ -186,19 +187,19 @@
   }
 
   .badge-accent {
-    @apply text-xs font-display font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent;
+    @apply text-sm font-display font-semibold px-3 py-1.5 rounded-full bg-accent/10 text-accent;
   }
 
   .badge-muted {
-    @apply text-xs font-display font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground;
+    @apply text-sm font-display font-medium px-3 py-1.5 rounded-full bg-muted text-muted-foreground;
   }
 
   .badge-destructive {
-    @apply text-xs font-display font-semibold px-2.5 py-1 rounded-full bg-destructive/10 text-destructive;
+    @apply text-sm font-display font-semibold px-3 py-1.5 rounded-full bg-destructive/10 text-destructive;
   }
 
   .section-header {
-    @apply font-display text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3;
+    @apply font-display text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3;
   }
 
   .property-image {
