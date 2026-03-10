@@ -187,15 +187,15 @@
   }
 
   .badge-accent {
-    @apply text-xs font-display font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent;
+    @apply text-sm font-display font-semibold px-3 py-1.5 rounded-full bg-accent/10 text-accent;
   }
 
   .badge-muted {
-    @apply text-xs font-display font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground;
+    @apply text-sm font-display font-medium px-3 py-1.5 rounded-full bg-muted text-muted-foreground;
   }
 
   .badge-destructive {
-    @apply text-xs font-display font-semibold px-2.5 py-1 rounded-full bg-destructive/10 text-destructive;
+    @apply text-sm font-display font-semibold px-3 py-1.5 rounded-full bg-destructive/10 text-destructive;
   }
 
   .section-header {
