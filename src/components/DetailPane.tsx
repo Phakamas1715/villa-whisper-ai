@@ -82,11 +82,29 @@ function BookingDetail({ item }: { item: TimelineItem }) {
 function InquiryDetail({ item }: { item: TimelineItem }) {
   const { t } = useLanguage();
   const d = item.data;
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedResponse, setEditedResponse] = useState(d.aiResponse as string || '');
+
+  const platformColors: Record<string, string> = {
+    'Airbnb': 'bg-[#FF5A5F]/10 text-[#FF5A5F]',
+    'Booking.com': 'bg-[#003580]/10 text-[#003580] dark:bg-[#003580]/20 dark:text-[#5B9BD5]',
+    'LINE': 'bg-[#06C755]/10 text-[#06C755]',
+    'Facebook': 'bg-[#1877F2]/10 text-[#1877F2]',
+    'Agoda': 'bg-[#5542F6]/10 text-[#5542F6]',
+    'WhatsApp': 'bg-[#25D366]/10 text-[#25D366]',
+  };
+  const platform = d.platform as string || d.channel as string;
+  const langFlag = d.language === 'th' ? '🇹🇭' : d.language === 'en' ? '🇬🇧' : d.language === 'ja' ? '🇯🇵' : d.language === 'zh' ? '🇨🇳' : d.language === 'ko' ? '🇰🇷' : '🌐';
+
   return (
     <div className="p-5 space-y-4">
       <div>
         <h2 className="font-display font-bold text-xl text-foreground">{t('timeline.inquiry')}</h2>
-        <p className="font-display text-sm text-muted-foreground mt-1">{d.channel as string} · {d.property as string} · {d.language === 'th' ? '🇹🇭' : '🇬🇧'}</p>
+        <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+          <span className={`text-sm font-display font-bold px-3 py-1 rounded-full ${platformColors[platform] || 'bg-muted text-muted-foreground'}`}>{platform}</span>
+          <span className="font-display text-sm text-muted-foreground">{d.property as string}</span>
+          <span className="font-display text-sm text-muted-foreground">{langFlag} {(d.language as string || '').toUpperCase()}</span>
+        </div>
       </div>
       <Row icon={User} label={t('detail.from')} value={d.guestName as string} />
       <div className="bg-muted/50 rounded-xl p-4"><p className="font-body text-base text-foreground leading-relaxed">{d.message as string}</p></div>
@@ -97,12 +115,26 @@ function InquiryDetail({ item }: { item: TimelineItem }) {
             <span className="font-display text-sm text-accent font-bold">{t('timeline.ai_draft')}</span>
             <span className="font-display text-xs text-muted-foreground ml-auto">{((d.aiConfidence as number) * 100).toFixed(0)}%</span>
           </div>
-          <p className="font-body text-base text-foreground leading-relaxed">{d.aiResponse as string}</p>
+          {isEditing ? (
+            <div className="space-y-3">
+              <textarea
+                value={editedResponse}
+                onChange={(e) => setEditedResponse(e.target.value)}
+                className="w-full h-32 rounded-lg bg-background border border-border p-3 font-body text-base text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-accent/30"
+              />
+              <div className="flex gap-2">
+                <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display" onClick={() => setIsEditing(false)}>{t('chat.save')}</Button>
+                <Button size="sm" variant="outline" className="font-display" onClick={() => { setEditedResponse(d.aiResponse as string); setIsEditing(false); }}>{t('chat.cancel')}</Button>
+              </div>
+            </div>
+          ) : (
+            <p className="font-body text-base text-foreground leading-relaxed">{editedResponse}</p>
+          )}
         </div>
       )}
       <div className="flex gap-2">
         <Button className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold h-12 text-base"><Send size={16} className="mr-1.5" />{t('detail.send_ai_reply')}</Button>
-        <Button variant="outline" className="font-display h-12 text-base">{t('detail.edit')}</Button>
+        <Button variant="outline" className="font-display h-12 text-base" onClick={() => setIsEditing(!isEditing)}><Pencil size={16} className="mr-1.5" />{t('detail.edit')}</Button>
       </div>
     </div>
   );
