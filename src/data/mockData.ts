@@ -1,7 +1,8 @@
+import villaSeaview from '@/assets/villa-seaview.jpg';
+import villaSunset from '@/assets/villa-sunset.jpg';
+import villaHillside from '@/assets/villa-hillside.jpg';
+
 export type TimelineItemType = 'booking' | 'task' | 'damage' | 'inquiry' | 'pricing' | 'regulatory' | 'community' | 'guest_flow';
-export type BookingStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled';
-export type TaskStatus = 'pending' | 'in_progress' | 'completed';
-export type DamageSeverity = 'low' | 'medium' | 'high';
 
 export interface TimelineItem {
   id: string;
@@ -13,13 +14,19 @@ export interface TimelineItem {
   data: Record<string, unknown>;
 }
 
+export const propertyImages: Record<string, string> = {
+  'Villa Seaview': villaSeaview,
+  'Villa Sunset': villaSunset,
+  'Villa Hillside': villaHillside,
+};
+
 export const mockTimeline: TimelineItem[] = [
   {
     id: 'r001',
     type: 'regulatory',
     timestamp: '2026-03-10T15:00:00',
-    title: '⚠️ TM30 Reminder — Villa Seaview',
-    subtitle: 'John Miller (USA) — ต้องแจ้ง TM30 ภายใน 24 ชม.',
+    title: 'TM30 Reminder',
+    subtitle: 'John Miller (USA) — ต้องแจ้งภายใน 24 ชม.',
     status: 'pending',
     data: {
       property: 'Villa Seaview',
@@ -35,7 +42,7 @@ export const mockTimeline: TimelineItem[] = [
     id: 'b001',
     type: 'booking',
     timestamp: '2026-03-10T14:30:00',
-    title: 'New Booking — Villa Seaview',
+    title: 'New Booking Confirmed',
     subtitle: 'John & Sarah Miller · 4 guests · 5 nights',
     status: 'confirmed',
     data: {
@@ -53,23 +60,23 @@ export const mockTimeline: TimelineItem[] = [
     id: 'gf001',
     type: 'guest_flow',
     timestamp: '2026-03-10T14:00:00',
-    title: 'Self Check-in Sent — Villa Seaview',
-    subtitle: 'QR กุญแจ + WiFi + คู่มือ ส่งให้ John Miller ผ่าน LINE แล้ว',
+    title: 'Self Check-in Sent',
+    subtitle: 'QR กุญแจ + WiFi + คู่มือ ส่งให้ John Miller แล้ว',
     status: 'completed',
     data: {
       property: 'Villa Seaview',
       guestName: 'John Miller',
       channel: 'LINE',
-      items: ['QR Door Code', 'WiFi Password', 'House Manual (EN)', 'Google Maps Pin', 'TDAC Reminder'],
-      description: 'ระบบส่งข้อมูลเช็คอินอัตโนมัติ ไม่ต้องโทรหาแขก',
+      items: ['QR Door Code', 'WiFi', 'House Manual (EN)', 'Google Maps', 'TDAC Reminder'],
+      description: 'ส่งข้อมูลเช็คอินอัตโนมัติ ไม่ต้องโทรหาแขก',
     },
   },
   {
     id: 'i001',
     type: 'inquiry',
     timestamp: '2026-03-10T13:15:00',
-    title: 'LINE Inquiry — Villa Sunset',
-    subtitle: 'คุณสมชาย ถามเรื่องราคาช่วงสงกรานต์',
+    title: 'LINE Inquiry',
+    subtitle: 'คุณสมชาย ถามราคาสงกรานต์',
     status: 'pending',
     data: {
       guestName: 'คุณสมชาย',
@@ -77,7 +84,7 @@ export const mockTimeline: TimelineItem[] = [
       channel: 'LINE',
       language: 'th',
       message: 'สนใจจองวิลล่าช่วงสงกรานต์ 12-16 เมษายน 6 คน ราคาเท่าไหร่ครับ?',
-      aiResponse: 'สวัสดีค่ะคุณสมชาย! Villa Sunset ช่วงสงกรานต์ 12-16 เม.ย. (4 คืน) 6 ท่าน ราคาพิเศษ ฿56,000 รวม early check-in ค่ะ 🎉 สนใจจองเลยไหมคะ?',
+      aiResponse: 'สวัสดีค่ะคุณสมชาย! Villa Sunset ช่วงสงกรานต์ 12-16 เม.ย. (4 คืน) 6 ท่าน ราคาพิเศษ ฿56,000 รวม early check-in ค่ะ 🎉',
       aiConfidence: 0.95,
     },
   },
@@ -85,8 +92,8 @@ export const mockTimeline: TimelineItem[] = [
     id: 't001',
     type: 'task',
     timestamp: '2026-03-10T11:00:00',
-    title: 'Cleaning — Villa Hillside',
-    subtitle: 'Check-out today · Assigned: คุณน้อย',
+    title: 'Cleaning Task',
+    subtitle: 'Villa Hillside · Check-out today · คุณน้อย',
     status: 'in_progress',
     data: {
       property: 'Villa Hillside',
@@ -101,24 +108,24 @@ export const mockTimeline: TimelineItem[] = [
     id: 'c001',
     type: 'community',
     timestamp: '2026-03-10T10:30:00',
-    title: 'Community — กลุ่มพัทยา',
+    title: 'Community Post',
     subtitle: 'คุณวิชัย แชร์: "ช่างแอร์ดี ราคาถูก ซอยบัวขาว"',
     status: 'completed',
     data: {
       region: 'พัทยา',
       author: 'คุณวิชัย',
-      message: 'แนะนำช่างแอร์ ช่างเอก 089-xxx-xxxx ซ่อมเร็ว ราคาถูก ซอยบัวขาว เรียกมาหลายครั้งแล้ว ดีทุกครั้งครับ 👍',
+      message: 'แนะนำช่างแอร์ ช่างเอก 089-xxx-xxxx ซ่อมเร็ว ราคาถูก ซอยบัวขาว ดีทุกครั้งครับ 👍',
       likes: 12,
       replies: 4,
-      category: 'vendor_recommendation',
+      category: 'vendor',
     },
   },
   {
     id: 'p001',
     type: 'pricing',
     timestamp: '2026-03-10T09:00:00',
-    title: 'AI Price Suggestion — Villa Seaview',
-    subtitle: 'สงกรานต์: ฿12,500/night (+38%) · Confidence 92%',
+    title: 'AI Price Suggestion',
+    subtitle: 'สงกรานต์: ฿12,500/night (+38%)',
     status: 'pending',
     data: {
       property: 'Villa Seaview',
@@ -135,8 +142,8 @@ export const mockTimeline: TimelineItem[] = [
     id: 'd001',
     type: 'damage',
     timestamp: '2026-03-09T16:45:00',
-    title: 'Damage Report — Villa Sunset',
-    subtitle: 'โคมไฟห้องนอนใหญ่แตก · Medium · Est. ฿2,800',
+    title: 'Damage Detected',
+    subtitle: 'โคมไฟห้องนอนใหญ่แตก · Est. ฿2,800',
     status: 'reported',
     data: {
       property: 'Villa Sunset',
@@ -155,7 +162,7 @@ export const mockTimeline: TimelineItem[] = [
     id: 'b002',
     type: 'booking',
     timestamp: '2026-03-09T10:20:00',
-    title: 'Booking Completed — Villa Hillside',
+    title: 'Booking Completed',
     subtitle: 'The Tanaka Family · 3 guests · 7 nights',
     status: 'completed',
     data: {
@@ -167,55 +174,6 @@ export const mockTimeline: TimelineItem[] = [
       totalPrice: 63000,
       source: 'Booking.com',
       artSeed: 55219,
-    },
-  },
-  {
-    id: 'r002',
-    type: 'regulatory',
-    timestamp: '2026-03-09T09:00:00',
-    title: '✅ TM30 Submitted — Villa Hillside',
-    subtitle: 'Tanaka Family (Japan) — ส่ง TM30 สำเร็จ',
-    status: 'completed',
-    data: {
-      property: 'Villa Hillside',
-      guestName: 'Tanaka Family',
-      nationality: 'Japan',
-      documentType: 'TM30',
-      submittedAt: '2026-03-02T10:00:00',
-      autoGenerated: true,
-      description: 'TM30 ส่งอัตโนมัติผ่านระบบสำเร็จ',
-    },
-  },
-  {
-    id: 't002',
-    type: 'task',
-    timestamp: '2026-03-09T08:00:00',
-    title: 'Pool Maintenance — Villa Seaview',
-    subtitle: 'เช็คสารเคมีประจำสัปดาห์ · คุณสมชาย',
-    status: 'completed',
-    data: {
-      property: 'Villa Seaview',
-      taskType: 'maintenance',
-      assignedTo: 'คุณสมชาย',
-      scheduledTime: '09:00',
-      checklist: ['ค่า pH', 'คลอรีน', 'ล้างฟิลเตอร์', 'ระดับน้ำ'],
-      autoCreated: true,
-    },
-  },
-  {
-    id: 'c002',
-    type: 'community',
-    timestamp: '2026-03-08T20:00:00',
-    title: 'Community — กลุ่มขอนแก่น',
-    subtitle: 'คุณแพร: "เทศกาลไหม ราคาขึ้น 40% ปีนี้ใครปรับแล้วบ้าง?"',
-    status: 'completed',
-    data: {
-      region: 'ขอนแก่น',
-      author: 'คุณแพร',
-      message: 'เทศกาลไหมปีนี้ demand สูงมาก ปีที่แล้วราคาขึ้น 40% ใครปรับราคาแล้วบ้างคะ? แชร์กันหน่อย',
-      likes: 8,
-      replies: 6,
-      category: 'pricing_discussion',
     },
   },
 ];
@@ -236,42 +194,9 @@ export const dashboardStats = {
 };
 
 export const properties = [
-  {
-    id: 'p1',
-    name: 'Villa Seaview',
-    location: 'พัทยา',
-    bedrooms: 3,
-    bathrooms: 2,
-    basePrice: 9000,
-    status: 'active' as const,
-    occupancy: 82,
-    nextCheckIn: '2026-03-15',
-    image: '',
-  },
-  {
-    id: 'p2',
-    name: 'Villa Sunset',
-    location: 'พัทยา',
-    bedrooms: 4,
-    bathrooms: 3,
-    basePrice: 12000,
-    status: 'active' as const,
-    occupancy: 71,
-    nextCheckIn: '2026-03-18',
-    image: '',
-  },
-  {
-    id: 'p3',
-    name: 'Villa Hillside',
-    location: 'ขอนแก่น',
-    bedrooms: 2,
-    bathrooms: 2,
-    basePrice: 7500,
-    status: 'maintenance' as const,
-    occupancy: 65,
-    nextCheckIn: '2026-03-22',
-    image: '',
-  },
+  { id: 'p1', name: 'Villa Seaview', location: 'พัทยา', bedrooms: 3, bathrooms: 2, basePrice: 9500, status: 'active' as const, occupancy: 82, nextCheckIn: 'Mar 15', rating: 4.9, reviews: 47 },
+  { id: 'p2', name: 'Villa Sunset', location: 'พัทยา', bedrooms: 4, bathrooms: 3, basePrice: 12000, status: 'active' as const, occupancy: 71, nextCheckIn: 'Mar 18', rating: 4.8, reviews: 32 },
+  { id: 'p3', name: 'Villa Hillside', location: 'ขอนแก่น', bedrooms: 2, bathrooms: 2, basePrice: 7500, status: 'maintenance' as const, occupancy: 65, nextCheckIn: 'Mar 22', rating: 4.7, reviews: 28 },
 ];
 
 export const calendarEvents = [
@@ -282,48 +207,8 @@ export const calendarEvents = [
 ];
 
 export const communityPosts = [
-  {
-    id: 'cp1',
-    region: 'พัทยา',
-    author: 'คุณวิชัย',
-    avatar: 'วช',
-    time: '2 ชม. ที่แล้ว',
-    message: 'แนะนำช่างแอร์ ช่างเอก 089-xxx-xxxx ซ่อมเร็ว ราคาถูก ซอยบัวขาว เรียกมาหลายครั้งแล้ว ดีทุกครั้งครับ 👍',
-    likes: 12,
-    replies: 4,
-    category: 'vendor',
-  },
-  {
-    id: 'cp2',
-    region: 'ขอนแก่น',
-    author: 'คุณแพร',
-    avatar: 'แพ',
-    time: '1 วัน ที่แล้ว',
-    message: 'เทศกาลไหมปีนี้ demand สูงมาก ปีที่แล้วราคาขึ้น 40% ใครปรับราคาแล้วบ้างคะ? แชร์กันหน่อย',
-    likes: 8,
-    replies: 6,
-    category: 'pricing',
-  },
-  {
-    id: 'cp3',
-    region: 'ภูเก็ต',
-    author: 'คุณมาร์ค',
-    avatar: 'มค',
-    time: '2 วัน ที่แล้ว',
-    message: 'ใครมีแม่บ้านว่างบ้างครับ? ช่วง high season คนไม่พอ ต้องการ 3 คน โซนกะตะ-กะรน',
-    likes: 5,
-    replies: 9,
-    category: 'staffing',
-  },
-  {
-    id: 'cp4',
-    region: 'พัทยา',
-    author: 'คุณนิด',
-    avatar: 'นด',
-    time: '3 วัน ที่แล้ว',
-    message: 'TM30 ออนไลน์ตอนนี้เสถียรขึ้นมากเลยค่ะ ส่งผ่าน VillaFlow ไม่เคยมีปัญหา 🎉',
-    likes: 15,
-    replies: 2,
-    category: 'regulatory',
-  },
+  { id: 'cp1', region: 'พัทยา', author: 'คุณวิชัย', avatar: 'วช', time: '2 ชม.', message: 'แนะนำช่างแอร์ ช่างเอก 089-xxx-xxxx ซ่อมเร็ว ราคาถูก ซอยบัวขาว ดีทุกครั้งครับ 👍', likes: 12, replies: 4, category: 'vendor' },
+  { id: 'cp2', region: 'ขอนแก่น', author: 'คุณแพร', avatar: 'แพ', time: '1 วัน', message: 'เทศกาลไหมปีนี้ demand สูงมาก ปีที่แล้วราคาขึ้น 40% ใครปรับราคาแล้วบ้างคะ?', likes: 8, replies: 6, category: 'pricing' },
+  { id: 'cp3', region: 'ภูเก็ต', author: 'คุณมาร์ค', avatar: 'มค', time: '2 วัน', message: 'ใครมีแม่บ้านว่างบ้างครับ? ช่วง high season คนไม่พอ ต้องการ 3 คน โซนกะตะ-กะรน', likes: 5, replies: 9, category: 'staffing' },
+  { id: 'cp4', region: 'พัทยา', author: 'คุณนิด', avatar: 'นด', time: '3 วัน', message: 'TM30 ออนไลน์ตอนนี้เสถียรขึ้นมากเลยค่ะ ส่งผ่าน VillaFlow ไม่เคยมีปัญหา 🎉', likes: 15, replies: 2, category: 'regulatory' },
 ];

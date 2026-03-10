@@ -1,4 +1,4 @@
-import { Calendar, Home, ClipboardList, Building2, Bell, Settings, Users, Shield, MessageCircle } from 'lucide-react';
+import { Calendar, Home, ClipboardList, Building2, Bell, Users, Shield } from 'lucide-react';
 
 interface SideNavProps {
   activeSection: string;
@@ -20,9 +20,9 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex flex-col items-center w-16 bg-sidebar py-6 gap-2 fixed left-0 top-0 h-full z-30">
-        <div className="mb-6">
-          <div className="w-9 h-9 rounded-lg bg-sidebar-primary flex items-center justify-center font-display font-bold text-sidebar-primary-foreground text-sm">
+      <aside className="hidden md:flex flex-col items-center w-[68px] bg-sidebar py-6 gap-1 fixed left-0 top-0 h-full z-30">
+        <div className="mb-8">
+          <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center font-display font-extrabold text-accent-foreground text-sm tracking-tight">
             VF
           </div>
         </div>
@@ -35,24 +35,22 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
               className={`nav-icon-btn ${activeSection === item.id ? 'active' : ''}`}
               title={item.label}
             >
-              <item.icon size={20} />
+              <item.icon size={20} strokeWidth={activeSection === item.id ? 2.5 : 1.8} />
             </button>
           ))}
         </nav>
 
-        <div className="mt-auto flex flex-col gap-2 items-center">
-          <div className="text-center">
-            <div className="text-[9px] text-sidebar-foreground/40 font-display uppercase tracking-wider">
-              Revenue
-            </div>
-            <div className="text-xs font-display font-semibold text-sidebar-primary">
+        <div className="mt-auto flex flex-col gap-3 items-center">
+          <div className="text-center px-1">
+            <div className="text-[8px] text-sidebar-foreground/30 font-display uppercase tracking-widest">Rev</div>
+            <div className="text-[11px] font-display font-bold text-accent">
               ฿{(revenue / 1000).toFixed(0)}k
             </div>
           </div>
 
           <div className="relative">
             <button className="nav-icon-btn" title="Notifications">
-              <Bell size={20} />
+              <Bell size={20} strokeWidth={1.8} />
             </button>
             {pendingAlerts > 0 && (
               <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[9px] font-display font-bold flex items-center justify-center">
@@ -60,29 +58,33 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
               </span>
             )}
           </div>
-          <button className="nav-icon-btn" title="Settings">
-            <Settings size={20} />
-          </button>
         </div>
       </aside>
 
       {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sidebar flex justify-around items-center h-14 z-30">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sidebar flex justify-around items-center h-16 z-30 border-t border-sidebar-border pb-safe">
         {navItems.slice(0, 5).map((item) => (
           <button
             key={item.id}
             onClick={() => onSectionChange(item.id)}
-            className={`nav-icon-btn ${activeSection === item.id ? 'active' : ''}`}
+            className={`flex flex-col items-center gap-0.5 py-1 px-2 ${
+              activeSection === item.id ? 'text-accent' : 'text-sidebar-foreground/50'
+            }`}
           >
-            <item.icon size={20} />
+            <item.icon size={20} strokeWidth={activeSection === item.id ? 2.5 : 1.8} />
+            <span className="text-[9px] font-display font-medium">{item.label}</span>
           </button>
         ))}
         <div className="relative">
-          <button className="nav-icon-btn" title="Notifications">
-            <Bell size={20} />
+          <button
+            className="flex flex-col items-center gap-0.5 py-1 px-2 text-sidebar-foreground/50"
+            title="Notifications"
+          >
+            <Bell size={20} strokeWidth={1.8} />
+            <span className="text-[9px] font-display font-medium">Alerts</span>
           </button>
           {pendingAlerts > 0 && (
-            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[9px] font-display font-bold flex items-center justify-center">
+            <span className="absolute top-0 right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[9px] font-display font-bold flex items-center justify-center">
               {pendingAlerts}
             </span>
           )}
