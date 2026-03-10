@@ -57,6 +57,8 @@ const AIChatView = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editText, setEditText] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
