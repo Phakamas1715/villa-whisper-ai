@@ -40,9 +40,28 @@ const TimelineCard = ({ item, isSelected, onSelect }: TimelineCardProps) => {
         return <span className="inline-flex items-center gap-1 text-sm font-display font-semibold px-3 py-1.5 rounded-full bg-villa-gold/10 text-villa-gold"><Clock size={12} /> {t('stats.pending')}</span>;
       case 'reported':
         return <span className="badge-destructive flex items-center gap-1"><AlertTriangle size={12} /> {t('timeline.damage')}</span>;
+      case 'replied':
+        return <span className="badge-accent flex items-center gap-1"><CheckCircle2 size={12} /> {t('timeline.replied')}</span>;
       default:
         return null;
     }
+  };
+
+  const platformIcon = (platform?: string) => {
+    if (!platform) return null;
+    const colors: Record<string, string> = {
+      'Airbnb': 'bg-[#FF5A5F]/10 text-[#FF5A5F]',
+      'Booking.com': 'bg-[#003580]/10 text-[#003580] dark:bg-[#003580]/20 dark:text-[#5B9BD5]',
+      'LINE': 'bg-[#06C755]/10 text-[#06C755]',
+      'Facebook': 'bg-[#1877F2]/10 text-[#1877F2]',
+      'Agoda': 'bg-[#5542F6]/10 text-[#5542F6]',
+      'WhatsApp': 'bg-[#25D366]/10 text-[#25D366]',
+    };
+    return (
+      <span className={`text-xs font-display font-bold px-2.5 py-1 rounded-full ${colors[platform] || 'bg-muted text-muted-foreground'}`}>
+        {platform}
+      </span>
+    );
   };
 
   const formatTime = (ts: string) => new Date(ts).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
