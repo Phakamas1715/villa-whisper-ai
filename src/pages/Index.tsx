@@ -9,6 +9,7 @@ import CommunityView from '@/components/CommunityView';
 import RegulatoryView from '@/components/RegulatoryView';
 import TasksView from '@/components/TasksView';
 import AnalyticsView from '@/components/AnalyticsView';
+import AIChatView from '@/components/AIChatView';
 import { mockTimeline, revenueThisMonth, dashboardStats } from '@/data/mockData';
 import type { TimelineItem } from '@/data/mockData';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -34,6 +35,7 @@ const Index = () => {
       case 'community': return <CommunityView />;
       case 'regulatory': return <RegulatoryView />;
       case 'tasks': return <TasksView />;
+      case 'chat': return <AIChatView />;
       default:
         return (
           <>
