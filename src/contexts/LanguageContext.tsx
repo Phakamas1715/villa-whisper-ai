@@ -20,6 +20,7 @@ const translations: Translations = {
   'nav.community': { th: 'ชุมชน', en: 'Community' },
   'nav.regulatory': { th: 'กฎหมาย', en: 'Legal' },
   'nav.alerts': { th: 'แจ้งเตือน', en: 'Alerts' },
+  'nav.analytics': { th: 'วิเคราะห์', en: 'Analytics' },
   'nav.revenue': { th: 'รายได้', en: 'Revenue' },
 
   // Stats

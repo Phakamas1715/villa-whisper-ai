@@ -83,7 +83,7 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
 
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sidebar/95 backdrop-blur-xl flex justify-around items-center h-16 z-30 border-t border-sidebar-border pb-safe">
-        {navItems.slice(0, 4).map((item) => (
+        {navItems.slice(0, 5).map((item) => (
           <button
             key={item.id}
             onClick={() => onSectionChange(item.id)}
