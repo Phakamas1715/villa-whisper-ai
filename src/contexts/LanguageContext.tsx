@@ -159,6 +159,18 @@ const translations: Translations = {
   'analytics.demand': { th: 'ดีมานด์', en: 'Demand' },
   'analytics.avg_price': { th: 'ราคาเฉลี่ย', en: 'Avg Price' },
 
+  // Chat AI
+  'nav.chat': { th: 'AI แชท', en: 'AI Chat' },
+  'chat.title': { th: 'AI Chat Brain', en: 'AI Chat Brain' },
+  'chat.subtitle': { th: 'ตอบแขกอัตโนมัติ 95% ทุกภาษา — เข้าใจบริบทไทย', en: 'Auto-reply 95% of guest messages in any language — Thai context aware' },
+  'chat.auto': { th: 'อัตโนมัติ 95%', en: '95% Auto' },
+  'chat.welcome': { th: 'สวัสดีค่ะ! AI พร้อมตอบแขกแล้ว', en: 'Hello! AI is ready to reply guests' },
+  'chat.welcome_sub': { th: 'ลองถามคำถามที่แขกมักจะถาม — AI จะตอบอัตโนมัติพร้อมแสดง confidence score', en: 'Try asking common guest questions — AI auto-replies with confidence scores' },
+  'chat.placeholder': { th: 'พิมพ์ข้อความแขก (ไทย/อังกฤษ)...', en: 'Type a guest message (Thai/English)...' },
+  'chat.confidence': { th: 'ความมั่นใจ', en: 'Confidence' },
+  'chat.context': { th: 'บริบท', en: 'Context' },
+  'chat.ai_mode': { th: 'AI ตอบอัตโนมัติ', en: 'AI Auto-reply' },
+
   // Landing Page
   'landing.nav.features': { th: 'ฟีเจอร์', en: 'Features' },
   'landing.nav.pricing': { th: 'ราคา', en: 'Pricing' },

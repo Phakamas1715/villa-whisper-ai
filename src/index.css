@@ -71,6 +71,59 @@
     --sidebar-border: 210 25% 22%;
     --sidebar-ring: 152 56% 45%;
   }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 13%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 210 20% 92%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 14% 18%;
+    --secondary-foreground: 210 20% 92%;
+
+    --muted: 220 14% 18%;
+    --muted-foreground: 210 12% 55%;
+
+    --accent: 152 56% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 6 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 20%;
+    --input: 220 14% 20%;
+    --ring: 152 56% 42%;
+
+    --villa-concrete: 220 20% 10%;
+    --deep-water: 210 20% 92%;
+    --wet-sand: 35 15% 18%;
+    --new-leaf: 152 56% 42%;
+    --terracotta: 6 72% 50%;
+    --warm-gold: 38 75% 52%;
+    --ocean-blue: 200 60% 45%;
+
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -2px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 10px 25px -3px hsl(0 0% 0% / 0.35), 0 4px 6px -4px hsl(0 0% 0% / 0.2);
+    --shadow-xl: 0 20px 50px -12px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(152 56% 42% / 0.2);
+
+    --sidebar-background: 220 22% 8%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 152 56% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 18% 15%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 18% 15%;
+    --sidebar-ring: 152 56% 42%;
+  }
 }
 
 @layer base {
@@ -81,6 +134,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-display);
+    font-size: 16px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -120,7 +174,7 @@
   }
 
   .nav-icon-btn {
-    @apply flex items-center justify-center w-10 h-10 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
+    @apply flex items-center justify-center w-11 h-11 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
   }
   .nav-icon-btn.active {
     @apply text-sidebar-primary bg-sidebar-accent shadow-sm;
@@ -132,19 +186,19 @@
   }
 
   .badge-accent {
-    @apply text-[10px] font-display font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent;
+    @apply text-xs font-display font-semibold px-2.5 py-1 rounded-full bg-accent/10 text-accent;
   }
 
   .badge-muted {
-    @apply text-[10px] font-display font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground;
+    @apply text-xs font-display font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground;
   }
 
   .badge-destructive {
-    @apply text-[10px] font-display font-semibold px-2 py-0.5 rounded-full bg-destructive/10 text-destructive;
+    @apply text-xs font-display font-semibold px-2.5 py-1 rounded-full bg-destructive/10 text-destructive;
   }
 
   .section-header {
-    @apply font-display text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-3;
+    @apply font-display text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3;
   }
 
   .property-image {
