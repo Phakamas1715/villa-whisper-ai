@@ -6,65 +6,70 @@
 @import '@fontsource/plus-jakarta-sans/500.css';
 @import '@fontsource/plus-jakarta-sans/600.css';
 @import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
 @import '@fontsource/lora/400.css';
 @import '@fontsource/lora/500.css';
 @import '@fontsource/lora/600.css';
+@import '@fontsource/lora/400-italic.css';
 
 @layer base {
   :root {
-    /* VillaFlow — Stillwater Digital palette */
-    --background: 216 18% 96%;        /* Villa Concrete #F0F2F5 */
-    --foreground: 210 31% 24%;        /* Deep Water #2C3E50 */
+    --background: 210 20% 98%;
+    --foreground: 210 29% 15%;
 
-    --card: 0 0% 92%;                 /* Wet Sand #EAEAEA */
-    --card-foreground: 210 31% 24%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 29% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 31% 24%;
+    --popover-foreground: 210 29% 15%;
 
-    --primary: 210 31% 24%;           /* Deep Water */
-    --primary-foreground: 216 18% 96%;
+    --primary: 210 29% 15%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 0 0% 92%;            /* Wet Sand */
-    --secondary-foreground: 210 31% 24%;
+    --secondary: 210 14% 93%;
+    --secondary-foreground: 210 29% 15%;
 
-    --muted: 210 14% 89%;
-    --muted-foreground: 210 12% 55%;
+    --muted: 210 14% 93%;
+    --muted-foreground: 210 10% 50%;
 
-    --accent: 145 63% 49%;            /* New Leaf #2ECC71 */
+    --accent: 152 56% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 4 78% 57%;         /* Terracotta #E74C3C */
+    --destructive: 6 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 14% 85%;
-    --input: 210 14% 85%;
-    --ring: 210 31% 24%;
+    --border: 210 16% 90%;
+    --input: 210 16% 90%;
+    --ring: 210 29% 15%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
-    /* Custom tokens */
-    --villa-concrete: 216 18% 96%;
-    --deep-water: 210 31% 24%;
-    --wet-sand: 0 0% 92%;
-    --new-leaf: 145 63% 49%;
-    --terracotta: 4 78% 57%;
-    --timeline-line: 210 14% 82%;
+    /* Custom premium tokens */
+    --villa-concrete: 210 20% 98%;
+    --deep-water: 210 29% 15%;
+    --wet-sand: 35 20% 94%;
+    --new-leaf: 152 56% 45%;
+    --terracotta: 6 72% 55%;
+    --warm-gold: 38 80% 58%;
+    --ocean-blue: 200 65% 48%;
 
     --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-body: 'Lora', Georgia, serif;
 
-    --shadow-card: 0 1px 3px 0 hsl(210 31% 24% / 0.04), 0 1px 2px -1px hsl(210 31% 24% / 0.04);
-    --shadow-card-hover: 0 4px 12px 0 hsl(210 31% 24% / 0.08);
+    --shadow-sm: 0 1px 2px 0 hsl(210 29% 15% / 0.03);
+    --shadow-md: 0 4px 6px -1px hsl(210 29% 15% / 0.05), 0 2px 4px -2px hsl(210 29% 15% / 0.03);
+    --shadow-lg: 0 10px 25px -3px hsl(210 29% 15% / 0.08), 0 4px 6px -4px hsl(210 29% 15% / 0.03);
+    --shadow-xl: 0 20px 50px -12px hsl(210 29% 15% / 0.12);
+    --shadow-glow: 0 0 30px hsl(152 56% 45% / 0.15);
 
-    --sidebar-background: 210 31% 24%;
-    --sidebar-foreground: 216 18% 96%;
-    --sidebar-primary: 145 63% 49%;
+    --sidebar-background: 210 29% 15%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 152 56% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 28% 30%;
-    --sidebar-accent-foreground: 216 18% 96%;
-    --sidebar-border: 210 28% 30%;
-    --sidebar-ring: 145 63% 49%;
+    --sidebar-accent: 210 25% 22%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 210 25% 22%;
+    --sidebar-ring: 152 56% 45%;
   }
 }
 
@@ -92,36 +97,61 @@
 }
 
 @layer components {
-  .timeline-card {
-    @apply rounded-lg bg-card p-4 transition-all duration-200;
-    box-shadow: var(--shadow-card);
+  .glass-card {
+    @apply rounded-xl bg-card border border-border/50 transition-all duration-300;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(8px);
   }
-  .timeline-card:hover {
-    box-shadow: var(--shadow-card-hover);
+  .glass-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
   }
-  .timeline-card.selected {
-    @apply ring-2 ring-primary;
+  .glass-card.selected {
+    @apply ring-2 ring-accent/50;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .stat-card {
+    @apply rounded-xl bg-card border border-border/30 p-4 transition-all duration-200;
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-card:hover {
+    box-shadow: var(--shadow-md);
   }
 
   .nav-icon-btn {
-    @apply flex items-center justify-center w-10 h-10 rounded-lg text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-colors duration-150;
+    @apply flex items-center justify-center w-10 h-10 rounded-xl text-sidebar-foreground/50 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
   }
   .nav-icon-btn.active {
-    @apply text-sidebar-primary bg-sidebar-accent;
-  }
-
-  .status-confirmed {
-    @apply text-accent;
-  }
-  .status-pending {
-    @apply text-muted-foreground;
-  }
-  .status-alert {
-    @apply text-destructive;
+    @apply text-sidebar-primary bg-sidebar-accent shadow-sm;
   }
 
   .detail-pane {
-    @apply bg-card rounded-lg overflow-y-auto;
-    box-shadow: var(--shadow-card);
+    @apply bg-card rounded-2xl overflow-y-auto border border-border/30;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .badge-accent {
+    @apply text-[10px] font-display font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent;
+  }
+
+  .badge-muted {
+    @apply text-[10px] font-display font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground;
+  }
+
+  .badge-destructive {
+    @apply text-[10px] font-display font-semibold px-2 py-0.5 rounded-full bg-destructive/10 text-destructive;
+  }
+
+  .section-header {
+    @apply font-display text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-3;
+  }
+
+  .property-image {
+    @apply w-full h-40 object-cover rounded-xl;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(135deg, hsl(210 29% 15% / 0.85), hsl(210 29% 15% / 0.6));
   }
 }
