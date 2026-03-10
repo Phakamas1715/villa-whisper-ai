@@ -8,6 +8,7 @@ import PropertiesView from '@/components/PropertiesView';
 import CommunityView from '@/components/CommunityView';
 import RegulatoryView from '@/components/RegulatoryView';
 import TasksView from '@/components/TasksView';
+import AnalyticsView from '@/components/AnalyticsView';
 import { mockTimeline, revenueThisMonth, dashboardStats } from '@/data/mockData';
 import type { TimelineItem } from '@/data/mockData';
 import { AnimatePresence, motion } from 'framer-motion';
