@@ -9,6 +9,7 @@ import CommunityView from '@/components/CommunityView';
 import RegulatoryView from '@/components/RegulatoryView';
 import TasksView from '@/components/TasksView';
 import AnalyticsView from '@/components/AnalyticsView';
+import FinanceView from '@/components/FinanceView';
 import AIChatView from '@/components/AIChatView';
 import { mockTimeline, revenueThisMonth, dashboardStats } from '@/data/mockData';
 import type { TimelineItem } from '@/data/mockData';
