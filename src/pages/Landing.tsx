@@ -93,7 +93,7 @@ const Landing = () => {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">{t('landing.nav.features')}</a>
-            <a href="#pricing" className="hover:text-foreground transition-colors">{t('landing.nav.pricing')}</a>
+            <Link to="/pricing" className="hover:text-foreground transition-colors">{t('landing.nav.pricing')}</Link>
             <a href="#testimonials" className="hover:text-foreground transition-colors">{t('landing.nav.testimonials')}</a>
           </div>
           <div className="flex items-center gap-3">
