@@ -24,12 +24,13 @@ const SideNav = ({ activeSection, onSectionChange, revenue, pendingAlerts }: Sid
 
   const navItems = [
     { id: 'timeline', icon: Home, label: t('nav.timeline') },
-    { id: 'analytics', icon: BarChart3, label: t('nav.analytics') },
     { id: 'calendar', icon: Calendar, label: t('nav.calendar') },
-    { id: 'properties', icon: Building2, label: t('nav.properties') },
     { id: 'tasks', icon: ClipboardList, label: t('nav.tasks') },
-    { id: 'community', icon: Users, label: t('nav.community') },
     { id: 'regulatory', icon: Shield, label: t('nav.regulatory') },
+    { id: 'analytics', icon: BarChart3, label: t('nav.analytics') },
+    { id: 'finance', icon: DollarSign, label: t('nav.finance') },
+    { id: 'properties', icon: Building2, label: t('nav.properties') },
+    { id: 'community', icon: Users, label: t('nav.community') },
     { id: 'chat', icon: Bot, label: t('nav.chat') },
   ];
 

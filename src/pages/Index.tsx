@@ -31,6 +31,7 @@ const Index = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'analytics': return <AnalyticsView />;
+      case 'finance': return <FinanceView />;
       case 'calendar': return <CalendarView />;
       case 'properties': return <PropertiesView />;
       case 'community': return <CommunityView />;
