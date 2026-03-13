@@ -111,10 +111,10 @@ const Pitch = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Brain, title: 'AI Chat Brain', desc: 'ตอบ 10+ ภาษาอัตโนมัติ 95% — เข้าใจบริบทไทย (สงกรานต์/ฤดูฝน)', color: 'text-accent' },
-              { icon: Smartphone, title: 'Zero-Phone Journey', desc: 'แขก Self-Service ตั้งแต่จองถึง Check-out — เจ้าของไม่ต้องทำอะไร', color: 'text-accent' },
-              { icon: Shield, title: 'Overbooking Shield', desc: 'Sync Airbnb/Booking/LINE real-time — AI บล็อกจองซ้ำอัตโนมัติ', color: 'text-accent' },
-              { icon: FileText, title: 'Regulatory AI', desc: 'Auto TM30/TDAC + เตือน 24 ชม. + Export ภาษี ภ.ง.ด. ปุ่มเดียว', color: 'text-accent' },
+              { icon: Brain, title: 'AI Chat Brain', desc: 'รองรับ automate คำถามที่พบบ่อยและ workflow การสื่อสารหลายภาษา — เข้าใจบริบทไทย', color: 'text-accent' },
+              { icon: Smartphone, title: 'Self-Service Journey', desc: 'แขก Self-Service ตั้งแต่จองถึง Check-out — เจ้าของเข้าจัดการเฉพาะเคสพิเศษ', color: 'text-accent' },
+              { icon: Shield, title: 'Overbooking Shield', desc: 'Sync Airbnb/Booking/LINE real-time — บล็อกจองซ้ำอัตโนมัติ', color: 'text-accent' },
+              { icon: FileText, title: 'Compliance Support', desc: 'TM30/TDAC workflow support, reminders, pre-filled submission flows + Export ภาษี', color: 'text-accent' },
               { icon: Users, title: 'Community Network', desc: 'เชื่อมเจ้าของในพื้นที่เดียวกัน แชร์แม่บ้าน/ช่าง/เคล็ดลับ', color: 'text-accent' },
               { icon: BarChart3, title: 'Finance Dashboard', desc: 'กำไรรายยูนิต + AI แนะนำราคา + พิมพ์ถามไทยได้', color: 'text-accent' },
             ].map((s, i) => (
