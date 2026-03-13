@@ -196,9 +196,9 @@ const Pitch = () => {
               </thead>
               <tbody>
                 {[
-                  ['AI ตอบภาษาไทย + 10 ภาษา', '✅', '🔶 EN only', '❌'],
-                  ['Zero-Phone (AI ทำงานแทน 95%)', '✅', '❌', '❌'],
-                  ['TM30 / TDAC Auto', '✅', '❌', '🔶 Manual'],
+                  ['AI Multilingual Chat Support', '✅', '🔶 EN only', '❌'],
+                  ['Self-Service Guest Journey', '✅', '❌', '❌'],
+                  ['TM30 / TDAC Workflow Support', '✅', '❌', '🔶 Manual'],
                   ['Community เจ้าของในพื้นที่', '✅', '❌', '❌'],
                   ['LINE + PromptPay Native', '✅', '❌', '🔶 บางส่วน'],
                   ['ราคาเริ่ม (ต่อเดือน)', '฿0 ฟรี', '$30-100+', '฿500-1,500'],
