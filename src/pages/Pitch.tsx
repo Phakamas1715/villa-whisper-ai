@@ -46,11 +46,11 @@ const Pitch = () => {
               Thai Property Intelligence OS
             </p>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              ระบบปฏิบัติการอัจฉริยะสำหรับธุรกิจที่พักไทย<br />
-              ที่ทำงานแทนเจ้าของ 100% — ไม่ต้องรับสาย ไม่ต้อง Manual ไม่ต้องกลัวกฎหมาย
+              ลดงานรับสาย ลดงานจุกจิก ลดความเสี่ยง<br />
+              และเห็นกำไรรายยูนิตในที่เดียว
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              {['Zero-Phone 100%', 'AI ไทยแท้', 'Regulatory Auto', 'Community Local'].map((tag) => (
+              {['Workflow Automation', 'AI ไทยแท้', 'Compliance Support', 'Community Local'].map((tag) => (
                 <span key={tag} className="px-4 py-2 rounded-full bg-foreground/5 text-foreground font-semibold border border-border/50">
                   {tag}
                 </span>
