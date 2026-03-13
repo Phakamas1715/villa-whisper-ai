@@ -46,11 +46,11 @@ const Pitch = () => {
               Thai Property Intelligence OS
             </p>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              ระบบปฏิบัติการอัจฉริยะสำหรับธุรกิจที่พักไทย<br />
-              ที่ทำงานแทนเจ้าของ 100% — ไม่ต้องรับสาย ไม่ต้อง Manual ไม่ต้องกลัวกฎหมาย
+              ลดงานรับสาย ลดงานจุกจิก ลดความเสี่ยง<br />
+              และเห็นกำไรรายยูนิตในที่เดียว
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              {['Zero-Phone 100%', 'AI ไทยแท้', 'Regulatory Auto', 'Community Local'].map((tag) => (
+              {['Workflow Automation', 'AI ไทยแท้', 'Compliance Support', 'Community Local'].map((tag) => (
                 <span key={tag} className="px-4 py-2 rounded-full bg-foreground/5 text-foreground font-semibold border border-border/50">
                   {tag}
                 </span>
@@ -69,7 +69,7 @@ const Pitch = () => {
               เจ้าของที่พักไทยกำลังจมอยู่กับ<span className="text-destructive">งาน Manual</span>
             </h2>
             <p className="text-muted-foreground text-base mb-10 max-w-2xl">
-              การท่องเที่ยวฟื้นตัวเต็มที่ปี 2026 (34-35 ล้านนักท่องเที่ยวต่างชาติ / รายได้ 1.6 ล้านล้านบาท)
+              เป้าหมายปี 2026: 36.7 ล้านนักท่องเที่ยวต่างชาติ / รายได้ท่องเที่ยวรวม ~2.78 ล้านล้านบาท
               แต่เจ้าของ 1-15 ยูนิตยังใช้ LINE + Excel — ตอบช้า จองหลุด รีวิวแย่
             </p>
           </motion.div>
@@ -78,7 +78,7 @@ const Pitch = () => {
             {[
               { title: 'ตอบซ้ำซ้อน 24/7', desc: 'รับสายกลางดึง ตอบ LINE/FB/OTA คำถามเดิมซ้ำๆ', icon: MessageSquare, stat: '70%+ เวลาหมดกับงานตอบ' },
               { title: 'Overbooking จาก iCal ช้า', desc: 'จองซ้ำข้ามแพลตฟอร์ม — ลูกค้าโกรธ รีวิว 1 ดาว', icon: Calendar, stat: '15-20% เจอ overbooking' },
-              { title: 'กฎหมายไทยซับซ้อน', desc: 'TM30/TDAC ต้องรายงานภายใน 24 ชม. ปรับ 2,000 บาท/คน', icon: Shield, stat: 'ปรับรวม 50,000+ ต่อปี' },
+              { title: 'Compliance ยุ่งยาก', desc: 'TM30 ต้องแจ้งที่พักต่างชาติภายใน 24 ชม. / TDAC ระบบดิจิทัลที่ต้องจัดการ', icon: Shield, stat: 'เสี่ยงโดนปรับหากพลาดขั้นตอน' },
               { title: 'ไม่เห็นกำไรจริง', desc: 'ไม่รู้ว่ายูนิตไหนกำไร/ขาดทุน ค่าใช้จ่ายกระจัดกระจาย', icon: BarChart3, stat: '60% ไม่ track ค่าใช้จ่ายรายยูนิต' },
             ].map((p, i) => (
               <motion.div key={p.title} {...fadeUp} transition={{ delay: i * 0.08 }} className="glass-card p-6 border-l-4 border-destructive/40">
@@ -102,19 +102,19 @@ const Pitch = () => {
           <motion.div {...fadeUp}>
             <SectionLabel icon={Zap} text="โซลูชัน" />
             <h2 className="font-extrabold text-3xl sm:text-4xl text-foreground mb-3">
-              VillaFlow: <span className="text-accent">ระบบ OS</span> ที่ทำงานแทนเจ้าของ
+              VillaFlow: <span className="text-accent">ระบบ OS</span> ที่ลดงาน Manual อย่างมีนัยสำคัญ
             </h2>
             <p className="text-muted-foreground text-base mb-10 max-w-2xl">
-              ไม่ใช่ PMS ทั่วไป — แต่เป็น Operating System ที่รวม AI, Automation, กฎหมายไทย และ Community ไว้ในที่เดียว
+              ไม่ใช่ PMS ทั่วไป — แต่เป็น Operating System ที่รวม AI, Automation, Compliance Support และ Community ไว้ในที่เดียว
             </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Brain, title: 'AI Chat Brain', desc: 'ตอบ 10+ ภาษาอัตโนมัติ 95% — เข้าใจบริบทไทย (สงกรานต์/ฤดูฝน)', color: 'text-accent' },
-              { icon: Smartphone, title: 'Zero-Phone Journey', desc: 'แขก Self-Service ตั้งแต่จองถึง Check-out — เจ้าของไม่ต้องทำอะไร', color: 'text-accent' },
-              { icon: Shield, title: 'Overbooking Shield', desc: 'Sync Airbnb/Booking/LINE real-time — AI บล็อกจองซ้ำอัตโนมัติ', color: 'text-accent' },
-              { icon: FileText, title: 'Regulatory AI', desc: 'Auto TM30/TDAC + เตือน 24 ชม. + Export ภาษี ภ.ง.ด. ปุ่มเดียว', color: 'text-accent' },
+              { icon: Brain, title: 'AI Chat Brain', desc: 'รองรับ automate คำถามที่พบบ่อยและ workflow การสื่อสารหลายภาษา — เข้าใจบริบทไทย', color: 'text-accent' },
+              { icon: Smartphone, title: 'Self-Service Journey', desc: 'แขก Self-Service ตั้งแต่จองถึง Check-out — เจ้าของเข้าจัดการเฉพาะเคสพิเศษ', color: 'text-accent' },
+              { icon: Shield, title: 'Overbooking Shield', desc: 'Sync Airbnb/Booking/LINE real-time — บล็อกจองซ้ำอัตโนมัติ', color: 'text-accent' },
+              { icon: FileText, title: 'Compliance Support', desc: 'TM30/TDAC workflow support, reminders, pre-filled submission flows + Export ภาษี', color: 'text-accent' },
               { icon: Users, title: 'Community Network', desc: 'เชื่อมเจ้าของในพื้นที่เดียวกัน แชร์แม่บ้าน/ช่าง/เคล็ดลับ', color: 'text-accent' },
               { icon: BarChart3, title: 'Finance Dashboard', desc: 'กำไรรายยูนิต + AI แนะนำราคา + พิมพ์ถามไทยได้', color: 'text-accent' },
             ].map((s, i) => (
@@ -142,7 +142,7 @@ const Pitch = () => {
             {[
               { label: 'TAM', value: '฿120B+', desc: 'มูลค่าตลาดที่พักไทยทั้งหมด', sub: 'วิลล่า/คอนโด/โรงแรมเล็ก/หอพัก' },
               { label: 'SAM', value: '฿18B', desc: 'เจ้าของ 1-30 ยูนิตที่ต้องการ SaaS', sub: '~120,000 ราย ทั่วประเทศ' },
-              { label: 'SOM (Y3)', value: '฿180M', desc: 'เป้าหมาย 3 ปีแรก', sub: '~6,000 ราย × ฿2,500 avg/mo' },
+              { label: 'SOM (Y3)', value: '฿86.4M', desc: 'เป้าหมาย 3 ปีแรก', sub: '~6,000 ราย × ฿1,200 ARPU/mo' },
             ].map((m, i) => (
               <motion.div key={m.label} {...fadeUp} transition={{ delay: i * 0.1 }} className="glass-card p-6 text-center">
                 <span className="text-xs font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">{m.label}</span>
@@ -159,8 +159,8 @@ const Pitch = () => {
             </h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
-                'นักท่องเที่ยว 34-35 ล้านคน ปี 2026 — supply พุ่ง แข่งขันสูง',
-                'กฎ TM30/TDAC เข้มขึ้น — เจ้าของต้องการ automation',
+                'เป้าหมาย 36.7 ล้านนักท่องเที่ยว ปี 2026 — supply พุ่ง แข่งขันสูง',
+                'Compliance เข้มขึ้น — เจ้าของต้องการ workflow support',
                 'คู่แข่ง Global แพง/ไม่ local — โอกาสสำหรับ Thai-first',
                 'AI ถูกลง 10x — ต้นทุนต่ำ สเกลได้',
               ].map((r) => (
@@ -196,9 +196,9 @@ const Pitch = () => {
               </thead>
               <tbody>
                 {[
-                  ['AI ตอบภาษาไทย + 10 ภาษา', '✅', '🔶 EN only', '❌'],
-                  ['Zero-Phone (AI ทำงานแทน 95%)', '✅', '❌', '❌'],
-                  ['TM30 / TDAC Auto', '✅', '❌', '🔶 Manual'],
+                  ['AI Multilingual Chat Support', '✅', '🔶 EN only', '❌'],
+                  ['Self-Service Guest Journey', '✅', '❌', '❌'],
+                  ['TM30 / TDAC Workflow Support', '✅', '❌', '🔶 Manual'],
                   ['Community เจ้าของในพื้นที่', '✅', '❌', '❌'],
                   ['LINE + PromptPay Native', '✅', '❌', '🔶 บางส่วน'],
                   ['ราคาเริ่ม (ต่อเดือน)', '฿0 ฟรี', '$30-100+', '฿500-1,500'],
@@ -315,9 +315,9 @@ const Pitch = () => {
 
           <div className="grid sm:grid-cols-3 gap-5 mb-8">
             {[
-              { year: 'ปีที่ 1', users: '500 ราย', mrr: '฿500K', arr: '฿6M', highlight: false },
+              { year: 'ปีที่ 1', users: '500 ราย', mrr: '฿600K', arr: '฿7.2M', highlight: false },
               { year: 'ปีที่ 2', users: '2,500 ราย', mrr: '฿3M', arr: '฿36M', highlight: false },
-              { year: 'ปีที่ 3', users: '6,000 ราย', mrr: '฿15M', arr: '฿180M', highlight: true },
+              { year: 'ปีที่ 3', users: '6,000 ราย', mrr: '฿7.2M', arr: '฿86.4M', highlight: true },
             ].map((y, i) => (
               <motion.div key={y.year} {...fadeUp} transition={{ delay: i * 0.1 }}
                 className={`glass-card p-6 text-center ${y.highlight ? 'ring-2 ring-accent' : ''}`}>
@@ -388,8 +388,8 @@ const Pitch = () => {
           <motion.div {...fadeUp}>
             <div className="glass-card p-8 bg-accent/5 border border-accent/20 inline-block">
               <p className="text-lg font-bold text-foreground mb-4">
-                "VillaFlow จะทำให้เจ้าของที่พักไทยนอนหลับสบาย —<br/>
-                ไม่ต้องรับสาย ไม่ต้อง manual ไม่ต้องกลัวกฎหมาย"
+                "VillaFlow — เปลี่ยนงานที่พักไทยจาก LINE + Excel<br/>
+                ให้กลายเป็นระบบอัจฉริยะที่ทำงานได้จริง"
               </p>
               <div className="flex items-center justify-center gap-3">
                 <Link to="/dashboard">
