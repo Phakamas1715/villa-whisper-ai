@@ -159,8 +159,8 @@ const Pitch = () => {
             </h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
-                'นักท่องเที่ยว 34-35 ล้านคน ปี 2026 — supply พุ่ง แข่งขันสูง',
-                'กฎ TM30/TDAC เข้มขึ้น — เจ้าของต้องการ automation',
+                'เป้าหมาย 36.7 ล้านนักท่องเที่ยว ปี 2026 — supply พุ่ง แข่งขันสูง',
+                'Compliance เข้มขึ้น — เจ้าของต้องการ workflow support',
                 'คู่แข่ง Global แพง/ไม่ local — โอกาสสำหรับ Thai-first',
                 'AI ถูกลง 10x — ต้นทุนต่ำ สเกลได้',
               ].map((r) => (
