@@ -78,7 +78,7 @@ const Pitch = () => {
             {[
               { title: 'ตอบซ้ำซ้อน 24/7', desc: 'รับสายกลางดึง ตอบ LINE/FB/OTA คำถามเดิมซ้ำๆ', icon: MessageSquare, stat: '70%+ เวลาหมดกับงานตอบ' },
               { title: 'Overbooking จาก iCal ช้า', desc: 'จองซ้ำข้ามแพลตฟอร์ม — ลูกค้าโกรธ รีวิว 1 ดาว', icon: Calendar, stat: '15-20% เจอ overbooking' },
-              { title: 'กฎหมายไทยซับซ้อน', desc: 'TM30/TDAC ต้องรายงานภายใน 24 ชม. ปรับ 2,000 บาท/คน', icon: Shield, stat: 'ปรับรวม 50,000+ ต่อปี' },
+              { title: 'Compliance ยุ่งยาก', desc: 'TM30 ต้องแจ้งที่พักต่างชาติภายใน 24 ชม. / TDAC ระบบดิจิทัลที่ต้องจัดการ', icon: Shield, stat: 'เสี่ยงโดนปรับหากพลาดขั้นตอน' },
               { title: 'ไม่เห็นกำไรจริง', desc: 'ไม่รู้ว่ายูนิตไหนกำไร/ขาดทุน ค่าใช้จ่ายกระจัดกระจาย', icon: BarChart3, stat: '60% ไม่ track ค่าใช้จ่ายรายยูนิต' },
             ].map((p, i) => (
               <motion.div key={p.title} {...fadeUp} transition={{ delay: i * 0.08 }} className="glass-card p-6 border-l-4 border-destructive/40">
