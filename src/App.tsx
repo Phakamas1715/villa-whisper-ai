@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Landing from "./pages/Landing.tsx";
 import Index from "./pages/Index.tsx";
 import Pricing from "./pages/Pricing.tsx";
+import Pitch from "./pages/Pitch.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Landing />} />
             <Route path="/dashboard" element={<Index />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/pitch" element={<Pitch />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
