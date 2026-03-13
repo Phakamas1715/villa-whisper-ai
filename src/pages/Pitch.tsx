@@ -102,10 +102,10 @@ const Pitch = () => {
           <motion.div {...fadeUp}>
             <SectionLabel icon={Zap} text="โซลูชัน" />
             <h2 className="font-extrabold text-3xl sm:text-4xl text-foreground mb-3">
-              VillaFlow: <span className="text-accent">ระบบ OS</span> ที่ทำงานแทนเจ้าของ
+              VillaFlow: <span className="text-accent">ระบบ OS</span> ที่ลดงาน Manual อย่างมีนัยสำคัญ
             </h2>
             <p className="text-muted-foreground text-base mb-10 max-w-2xl">
-              ไม่ใช่ PMS ทั่วไป — แต่เป็น Operating System ที่รวม AI, Automation, กฎหมายไทย และ Community ไว้ในที่เดียว
+              ไม่ใช่ PMS ทั่วไป — แต่เป็น Operating System ที่รวม AI, Automation, Compliance Support และ Community ไว้ในที่เดียว
             </p>
           </motion.div>
 
