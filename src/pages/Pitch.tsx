@@ -315,9 +315,9 @@ const Pitch = () => {
 
           <div className="grid sm:grid-cols-3 gap-5 mb-8">
             {[
-              { year: 'ปีที่ 1', users: '500 ราย', mrr: '฿500K', arr: '฿6M', highlight: false },
+              { year: 'ปีที่ 1', users: '500 ราย', mrr: '฿600K', arr: '฿7.2M', highlight: false },
               { year: 'ปีที่ 2', users: '2,500 ราย', mrr: '฿3M', arr: '฿36M', highlight: false },
-              { year: 'ปีที่ 3', users: '6,000 ราย', mrr: '฿15M', arr: '฿180M', highlight: true },
+              { year: 'ปีที่ 3', users: '6,000 ราย', mrr: '฿7.2M', arr: '฿86.4M', highlight: true },
             ].map((y, i) => (
               <motion.div key={y.year} {...fadeUp} transition={{ delay: i * 0.1 }}
                 className={`glass-card p-6 text-center ${y.highlight ? 'ring-2 ring-accent' : ''}`}>
