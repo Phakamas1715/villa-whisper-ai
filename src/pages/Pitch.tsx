@@ -388,8 +388,8 @@ const Pitch = () => {
           <motion.div {...fadeUp}>
             <div className="glass-card p-8 bg-accent/5 border border-accent/20 inline-block">
               <p className="text-lg font-bold text-foreground mb-4">
-                "VillaFlow จะทำให้เจ้าของที่พักไทยนอนหลับสบาย —<br/>
-                ไม่ต้องรับสาย ไม่ต้อง manual ไม่ต้องกลัวกฎหมาย"
+                "VillaFlow — เปลี่ยนงานที่พักไทยจาก LINE + Excel<br/>
+                ให้กลายเป็นระบบอัจฉริยะที่ทำงานได้จริง"
               </p>
               <div className="flex items-center justify-center gap-3">
                 <Link to="/dashboard">
