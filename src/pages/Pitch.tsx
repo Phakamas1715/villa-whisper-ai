@@ -142,7 +142,7 @@ const Pitch = () => {
             {[
               { label: 'TAM', value: '฿120B+', desc: 'มูลค่าตลาดที่พักไทยทั้งหมด', sub: 'วิลล่า/คอนโด/โรงแรมเล็ก/หอพัก' },
               { label: 'SAM', value: '฿18B', desc: 'เจ้าของ 1-30 ยูนิตที่ต้องการ SaaS', sub: '~120,000 ราย ทั่วประเทศ' },
-              { label: 'SOM (Y3)', value: '฿180M', desc: 'เป้าหมาย 3 ปีแรก', sub: '~6,000 ราย × ฿2,500 avg/mo' },
+              { label: 'SOM (Y3)', value: '฿86.4M', desc: 'เป้าหมาย 3 ปีแรก', sub: '~6,000 ราย × ฿1,200 ARPU/mo' },
             ].map((m, i) => (
               <motion.div key={m.label} {...fadeUp} transition={{ delay: i * 0.1 }} className="glass-card p-6 text-center">
                 <span className="text-xs font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">{m.label}</span>
